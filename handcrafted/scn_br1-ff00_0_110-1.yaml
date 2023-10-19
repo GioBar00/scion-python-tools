@@ -1,200 +1,200 @@
-#apiVersion: apps/v1
-#kind: Deployment
-#metadata:
-#  labels:
-#    service: scion-br1-ff00-0-110-1
-#  name: scion-br1-ff00-0-110-1
-#spec:
-#  replicas: 1
-#  selector:
-#    matchLabels:
-#      service: scion-br1-ff00-0-110-1
-#  strategy:
-#    type: Recreate
-#  template:
-#    metadata:
-#      labels:
-#        scionlinks/scn-000: "true"
-#        scionlinks/scn-002: "true"
-#        service: scion-br1-ff00-0-110-1
-#    spec:
-#      hostname: br1
-#      subdomain: test
-#      securityContext:
-#        runAsUser: 1000
-#        runAsGroup: 1000
-#      containers:
-#        - args:
-#            - --config
-#            - /share/conf/br1-ff00_0_110-1.toml
-#          env:
-#            - name: SCION_EXPERIMENTAL_BFD_DESIRED_MIN_TX
-#            - name: SCION_EXPERIMENTAL_BFD_DETECT_MULT
-#            - name: SCION_EXPERIMENTAL_BFD_REQUIRED_MIN_RX
-#          image: registry.digitalocean.com/scion-on-kubernetes/posix-router:latest
-#          name: scion-br1-ff00-0-110-1
-#          volumeMounts:
-#            - mountPath: /share/conf/prometheus
-#              name: vol-asff00-0-110-config-prometheus
-#            - mountPath: /share/conf/crypto/as
-#              name: vol-asff00-0-110-config-crypto-as
-#            - mountPath: /share/conf/crypto/ca
-#              name: vol-asff00-0-110-config-crypto-ca
-#            - mountPath: /share/conf/crypto/voting
-#              name: vol-asff00-0-110-config-crypto-voting
-#            - mountPath: /share/conf/crypto
-#              name: vol-asff00-0-110-config-crypto
-#            - mountPath: /share/conf/keys
-#              name: vol-asff00-0-110-config-keys
-#            - mountPath: /share/conf/certs
-#              name: vol-asff00-0-110-config-certs
-#            - mountPath: /share/conf/
-#              name: vol-asff00-0-110-config
-#      restartPolicy: Always
-#      volumes:
-#        - name: vol-asff00-0-110-config-prometheus
-#          configMap:
-#            name: asff00.0.110.config.prometheus
-#        - name: vol-asff00-0-110-config-crypto-as
-#          configMap:
-#            name: asff00.0.110.config.crypto.as
-#        - name: vol-asff00-0-110-config-crypto-ca
-#          configMap:
-#            name: asff00.0.110.config.crypto.ca
-#        - name: vol-asff00-0-110-config-crypto-voting
-#          configMap:
-#            name: asff00.0.110.config.crypto.voting
-#        - name: vol-asff00-0-110-config-crypto
-#          configMap:
-#            name: asff00.0.110.config.crypto
-#        - name: vol-asff00-0-110-config-keys
-#          configMap:
-#            name: asff00.0.110.config.keys
-#        - name: vol-asff00-0-110-config-certs
-#          configMap:
-#            name: asff00.0.110.config.certs
-#        - name: vol-asff00-0-110-config
-#          configMap:
-#            name: asff00.0.110.config
-#status: {}
-
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: scion-br1-ff00-0-110-1
   labels:
-    scionlinks/scn-000: "true"
-    scionlinks/scn-002: "true"
     service: scion-br1-ff00-0-110-1
+  name: scion-br1-ff00-0-110-1
 spec:
-  hostname: br1
-  subdomain: test
-  securityContext:
-    runAsUser: 1000
-    runAsGroup: 1000
-  containers:
-    - args:
-        - --config
-        - /share/conf/br1-ff00_0_110-1.toml
-      env:
-        - name: SCION_EXPERIMENTAL_BFD_DESIRED_MIN_TX
-        - name: SCION_EXPERIMENTAL_BFD_DETECT_MULT
-        - name: SCION_EXPERIMENTAL_BFD_REQUIRED_MIN_RX
-      image: registry.digitalocean.com/scion-on-kubernetes/posix-router:latest
-      name: scion-br1-ff00-0-110-1
-      volumeMounts:
-        - mountPath: /share/conf/prometheus
-          name: vol-asff00-0-110-config-prometheus
-        - mountPath: /share/conf/crypto/as
-          name: vol-asff00-0-110-config-crypto-as
-        - mountPath: /share/conf/crypto/ca
-          name: vol-asff00-0-110-config-crypto-ca
-        - mountPath: /share/conf/crypto/voting
-          name: vol-asff00-0-110-config-crypto-voting
-        - mountPath: /share/conf/crypto
-          name: vol-asff00-0-110-config-crypto
-        - mountPath: /share/conf/keys
-          name: vol-asff00-0-110-config-keys
-        - mountPath: /share/conf/certs
-          name: vol-asff00-0-110-config-certs
-        - mountPath: /share/conf/
-          name: vol-asff00-0-110-config
-  restartPolicy: Always
-  volumes:
-    - name: vol-asff00-0-110-config-prometheus
-      configMap:
-        name: asff00.0.110.config.prometheus
-    - name: vol-asff00-0-110-config-crypto-as
-      configMap:
-        name: asff00.0.110.config.crypto.as
-    - name: vol-asff00-0-110-config-crypto-ca
-      configMap:
-        name: asff00.0.110.config.crypto.ca
-    - name: vol-asff00-0-110-config-crypto-voting
-      configMap:
-        name: asff00.0.110.config.crypto.voting
-    - name: vol-asff00-0-110-config-crypto
-      configMap:
-        name: asff00.0.110.config.crypto
-    - name: vol-asff00-0-110-config-keys
-      configMap:
-        name: asff00.0.110.config.keys
-    - name: vol-asff00-0-110-config-certs
-      configMap:
-        name: asff00.0.110.config.certs
-    - name: vol-asff00-0-110-config
-      configMap:
-        name: asff00.0.110.config
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: scion-br1-ff00-0-110-1-svc # clear-nginx-service.scion scion-br1-ff00-0-110-1-svc.scion
-spec:
+  replicas: 1
   selector:
-    service: scion-br1-ff00-0-110-1
-  ports:
-  - name: port0
-    port: 50000
-    protocol: UDP
-    targetPort: 50000
-  - name: dispatcher0
-    port: 30042
-    protocol: UDP
-    targetPort: 30042
-  - name: dispatcher1
-    port: 30043
-    protocol: UDP
-    targetPort: 30043
-  - name: dispatcher2
-    port: 30044
-    protocol: UDP
-    targetPort: 30044
-  - name: dispatcher3
-    port: 30045
-    protocol: UDP
-    targetPort: 30045
-  - name: dispatcher4
-    port: 30046
-    protocol: UDP
-    targetPort: 30046
-  - name: dispatcher5
-    port: 30047
-    protocol: UDP
-    targetPort: 30047
-  - name: dispatcher6
-    port: 30048
-    protocol: UDP
-    targetPort: 30048
-  - name: dispatcher7
-    port: 30049
-    protocol: UDP
-    targetPort: 30049
-  - name: dispatcher8
-    port: 30050
-    protocol: UDP
-    targetPort: 30050
-  - name: dispatcher9
-    port: 30051
-    protocol: UDP
-    targetPort: 30051
+    matchLabels:
+      service: scion-br1-ff00-0-110-1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        scionlinks/scn-000: "true"
+        scionlinks/scn-002: "true"
+        service: scion-br1-ff00-0-110-1
+    spec:
+      hostname: br1
+      subdomain: test
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+      containers:
+        - args:
+            - --config
+            - /share/conf/br1-ff00_0_110-1.toml
+          env:
+            - name: SCION_EXPERIMENTAL_BFD_DESIRED_MIN_TX
+            - name: SCION_EXPERIMENTAL_BFD_DETECT_MULT
+            - name: SCION_EXPERIMENTAL_BFD_REQUIRED_MIN_RX
+          image: registry.digitalocean.com/scion-on-kubernetes/posix-router:latest
+          name: scion-br1-ff00-0-110-1
+          volumeMounts:
+            - mountPath: /share/conf/prometheus
+              name: vol-asff00-0-110-config-prometheus
+            - mountPath: /share/conf/crypto/as
+              name: vol-asff00-0-110-config-crypto-as
+            - mountPath: /share/conf/crypto/ca
+              name: vol-asff00-0-110-config-crypto-ca
+            - mountPath: /share/conf/crypto/voting
+              name: vol-asff00-0-110-config-crypto-voting
+            - mountPath: /share/conf/crypto
+              name: vol-asff00-0-110-config-crypto
+            - mountPath: /share/conf/keys
+              name: vol-asff00-0-110-config-keys
+            - mountPath: /share/conf/certs
+              name: vol-asff00-0-110-config-certs
+            - mountPath: /share/conf/
+              name: vol-asff00-0-110-config
+      restartPolicy: Always
+      volumes:
+        - name: vol-asff00-0-110-config-prometheus
+          configMap:
+            name: asff00.0.110.config.prometheus
+        - name: vol-asff00-0-110-config-crypto-as
+          configMap:
+            name: asff00.0.110.config.crypto.as
+        - name: vol-asff00-0-110-config-crypto-ca
+          configMap:
+            name: asff00.0.110.config.crypto.ca
+        - name: vol-asff00-0-110-config-crypto-voting
+          configMap:
+            name: asff00.0.110.config.crypto.voting
+        - name: vol-asff00-0-110-config-crypto
+          configMap:
+            name: asff00.0.110.config.crypto
+        - name: vol-asff00-0-110-config-keys
+          configMap:
+            name: asff00.0.110.config.keys
+        - name: vol-asff00-0-110-config-certs
+          configMap:
+            name: asff00.0.110.config.certs
+        - name: vol-asff00-0-110-config
+          configMap:
+            name: asff00.0.110.config
+status: {}
+#
+#apiVersion: v1
+#kind: Pod
+#metadata:
+#  name: scion-br1-ff00-0-110-1
+#  labels:
+#    scionlinks/scn-000: "true"
+#    scionlinks/scn-002: "true"
+#    service: scion-br1-ff00-0-110-1
+#spec:
+#  hostname: br1
+#  subdomain: test
+#  securityContext:
+#    runAsUser: 1000
+#    runAsGroup: 1000
+#  containers:
+#    - args:
+#        - --config
+#        - /share/conf/br1-ff00_0_110-1.toml
+#      env:
+#        - name: SCION_EXPERIMENTAL_BFD_DESIRED_MIN_TX
+#        - name: SCION_EXPERIMENTAL_BFD_DETECT_MULT
+#        - name: SCION_EXPERIMENTAL_BFD_REQUIRED_MIN_RX
+#      image: registry.digitalocean.com/scion-on-kubernetes/posix-router:latest
+#      name: scion-br1-ff00-0-110-1
+#      volumeMounts:
+#        - mountPath: /share/conf/prometheus
+#          name: vol-asff00-0-110-config-prometheus
+#        - mountPath: /share/conf/crypto/as
+#          name: vol-asff00-0-110-config-crypto-as
+#        - mountPath: /share/conf/crypto/ca
+#          name: vol-asff00-0-110-config-crypto-ca
+#        - mountPath: /share/conf/crypto/voting
+#          name: vol-asff00-0-110-config-crypto-voting
+#        - mountPath: /share/conf/crypto
+#          name: vol-asff00-0-110-config-crypto
+#        - mountPath: /share/conf/keys
+#          name: vol-asff00-0-110-config-keys
+#        - mountPath: /share/conf/certs
+#          name: vol-asff00-0-110-config-certs
+#        - mountPath: /share/conf/
+#          name: vol-asff00-0-110-config
+#  restartPolicy: Always
+#  volumes:
+#    - name: vol-asff00-0-110-config-prometheus
+#      configMap:
+#        name: asff00.0.110.config.prometheus
+#    - name: vol-asff00-0-110-config-crypto-as
+#      configMap:
+#        name: asff00.0.110.config.crypto.as
+#    - name: vol-asff00-0-110-config-crypto-ca
+#      configMap:
+#        name: asff00.0.110.config.crypto.ca
+#    - name: vol-asff00-0-110-config-crypto-voting
+#      configMap:
+#        name: asff00.0.110.config.crypto.voting
+#    - name: vol-asff00-0-110-config-crypto
+#      configMap:
+#        name: asff00.0.110.config.crypto
+#    - name: vol-asff00-0-110-config-keys
+#      configMap:
+#        name: asff00.0.110.config.keys
+#    - name: vol-asff00-0-110-config-certs
+#      configMap:
+#        name: asff00.0.110.config.certs
+#    - name: vol-asff00-0-110-config
+#      configMap:
+#        name: asff00.0.110.config
+#---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: scion-br1-ff00-0-110-1-svc # clear-nginx-service.scion scion-br1-ff00-0-110-1-svc.scion
+#spec:
+#  selector:
+#    service: scion-br1-ff00-0-110-1
+#  ports:
+#  - name: port0
+#    port: 50000
+#    protocol: UDP
+#    targetPort: 50000
+#  - name: dispatcher0
+#    port: 30042
+#    protocol: UDP
+#    targetPort: 30042
+#  - name: dispatcher1
+#    port: 30043
+#    protocol: UDP
+#    targetPort: 30043
+#  - name: dispatcher2
+#    port: 30044
+#    protocol: UDP
+#    targetPort: 30044
+#  - name: dispatcher3
+#    port: 30045
+#    protocol: UDP
+#    targetPort: 30045
+#  - name: dispatcher4
+#    port: 30046
+#    protocol: UDP
+#    targetPort: 30046
+#  - name: dispatcher5
+#    port: 30047
+#    protocol: UDP
+#    targetPort: 30047
+#  - name: dispatcher6
+#    port: 30048
+#    protocol: UDP
+#    targetPort: 30048
+#  - name: dispatcher7
+#    port: 30049
+#    protocol: UDP
+#    targetPort: 30049
+#  - name: dispatcher8
+#    port: 30050
+#    protocol: UDP
+#    targetPort: 30050
+#  - name: dispatcher9
+#    port: 30051
+#    protocol: UDP
+#    targetPort: 30051
