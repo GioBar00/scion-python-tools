@@ -17,6 +17,10 @@ spec:
         service: scion-cs1-ff00-0-110-1
         scionlinks/scn-002: "true"
     spec:
+      initContainers:
+        - name: init
+          image: busybox:1.28
+          command: [ 'sh', '-c', 'sleep 5' ]
       containers:
         - args:
             - --config
@@ -96,6 +100,8 @@ kind: Service
 metadata:
   name: scion-cs1-ff00-0-110-1-svc # clear-nginx-service.scion scion-br1-ff00-0-110-1-svc.scion
 spec:
+  clusterIP: None
+  publishNotReadyAddresses: true
   selector:
     service: scion-cs1-ff00-0-110-1
   ports:

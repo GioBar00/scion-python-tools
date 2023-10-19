@@ -14,7 +14,7 @@
   },
   "border_routers": {
     "br1-ff00_0_112-1": {
-      "internal_addr": "0.0.0.0:30042",
+      "internal_addr": "scion-br1-ff00-0-112-1-svc.scion:30042",
       "interfaces": {
         "1": {
           "underlay": {

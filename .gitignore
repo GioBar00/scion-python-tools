@@ -2,3 +2,7 @@ handcrafted-old
 temp
 *-kubeconfig.yaml
 kubectl
+customgen/**
+customgen
+/customgen/
+/customgen/gen/

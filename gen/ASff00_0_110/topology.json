@@ -31,7 +31,7 @@
       }
     },
     "br1-ff00_0_110-2": {
-      "internal_addr": "scion-br1-ff00-0-110-2-svc.scion:30052",
+      "internal_addr": "scion-br1-ff00-0-110-2-svc.scion:30042",
       "interfaces": {
         "2": {
           "underlay": {

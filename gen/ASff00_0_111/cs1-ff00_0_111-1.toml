@@ -15,9 +15,9 @@ connection = "/share/cache/cs1-ff00_0_111-1.path.db"
 enabled = false
 
 [quic]
-address_server = "0.0.0.0:30052"
-address_client = "0.0.0.0:30034"
-address_svcredirect = "0.0.0.0:30252"
+address_server = "scion-cs1-ff00-0-111-1-svc.scion:30033"
+address_client = "scion-cs1-ff00-0-111-1-svc.scion:30034"
+address_svcredirect = "0.0.0.0:30052"
 
 [metrics]
 prometheus = "0.0.0.0:30452"

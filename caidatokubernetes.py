@@ -149,7 +149,7 @@ def main():
     config.network = None
     config.random_ifids = True
     config.sig = False
-    config.output_dir = "gen"
+    config.output_dir = "gen2"
     config.topo_config = "dockergen.topo"
     config.topo_config_preloaded = as_dict
     config.features = []

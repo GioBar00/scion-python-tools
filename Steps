@@ -35,3 +35,10 @@ Make sure you replace the crypto under gen folder if they have expired.
 ./scion.sh topology --docker -c topology/tiny4.topo
 
 And copy over the certs, crypto and keys folders IN EACH AS, as well as certs ISD1 and trcs
+
+
+kubectl --kubeconfig=jvanbommel-test-k8s-kubeconfig.yaml delete pod busybox -n scion
+
+(venv)  ~/P/pythonProject  py[venv]   master ±  kubectl --kubeconfig=jvanbommel-test-k8s-kubeconfig.yaml run busybox --tty -i --image=busybox --restart=Never -n scion -- sh
+
+kubectl --kubeconfig=jvanbommel-test-k8s-kubeconfig.yaml exec -it busybox --tty -i -n scion -- sh
