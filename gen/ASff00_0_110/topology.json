@@ -1,0 +1,49 @@
+{
+  "attributes": [
+    "core"
+  ],
+  "isd_as": "1-ff00:0:110",
+  "mtu": 1400,
+  "control_service": {
+    "cs1-ff00_0_110-1": {
+      "addr": "scion-cs1-ff00-0-110-1-svc.scion:30252"
+    }
+  },
+  "discovery_service": {
+    "cs1-ff00_0_110-1": {
+      "addr": "scion-cs1-ff00-0-110-1-svc.scion:30252"
+    }
+  },
+  "border_routers": {
+    "br1-ff00_0_110-1": {
+      "internal_addr": "scion-br1-ff00-0-110-1-svc.scion:30042",
+      "interfaces": {
+        "1": {
+          "underlay": {
+            "public": "scion-br1-ff00-0-110-1-svc.scion:50000",
+            "remote": "scion-br1-ff00-0-111-1-svc.scion:50000",
+            "bind": "0.0.0.0"
+          },
+          "isd_as": "1-ff00:0:111",
+          "link_to": "child",
+          "mtu": 1280
+        }
+      }
+    },
+    "br1-ff00_0_110-2": {
+      "internal_addr": "scion-br1-ff00-0-110-2-svc.scion:30052",
+      "interfaces": {
+        "2": {
+          "underlay": {
+            "public": "scion-br1-ff00-0-110-2-svc.scion:50000",
+            "remote": "scion-br1-ff00-0-112-1-svc.scion:50000",
+            "bind": "0.0.0.0"
+          },
+          "isd_as": "1-ff00:0:112",
+          "link_to": "child",
+          "mtu": 1472
+        }
+      }
+    }
+  }
+}

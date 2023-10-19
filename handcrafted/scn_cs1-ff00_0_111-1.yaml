@@ -1,0 +1,107 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: scion-cs1-ff00-0-111-1
+  name: scion-cs1-ff00-0-111-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: scion-cs1-ff00-0-111-1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: scion-cs1-ff00-0-111-1
+        scionlinks/scn-003: "true"
+    spec:
+      containers:
+        - args:
+            - --config
+            - /share/conf/cs1-ff00_0_111-1.toml
+          image: registry.digitalocean.com/scion-on-kubernetes/control:latest
+          name: scion-cs1-ff00-0-111-1-cs
+          volumeMounts:
+            - mountPath: /share/conf/prometheus
+              name: vol-asff00-0-111-config-prometheus
+            - mountPath: /share/conf/crypto/as
+              name: vol-asff00-0-111-config-crypto-as
+            - mountPath: /share/conf/crypto
+              name: vol-asff00-0-111-config-crypto
+            - mountPath: /share/conf/keys
+              name: vol-asff00-0-111-config-keys
+            - mountPath: /share/conf/certs
+              name: vol-asff00-0-111-config-certs
+            - mountPath: /share/conf/
+              name: vol-asff00-0-111-config
+        - args:
+            - --config
+            - /share/conf/disp_cs1-ff00_0_111-1.toml
+          image: registry.digitalocean.com/scion-on-kubernetes/dispatcher:latest
+          name: scion-cs1-ff00-0-111-1-disp
+          volumeMounts:
+            - mountPath: /share/conf/prometheus
+              name: vol-asff00-0-111-config-prometheus
+            - mountPath: /share/conf/crypto/as
+              name: vol-asff00-0-111-config-crypto-as
+            - mountPath: /share/conf/crypto
+              name: vol-asff00-0-111-config-crypto
+            - mountPath: /share/conf/keys
+              name: vol-asff00-0-111-config-keys
+            - mountPath: /share/conf/certs
+              name: vol-asff00-0-111-config-certs
+            - mountPath: /share/conf/
+              name: vol-asff00-0-111-config
+      restartPolicy: Always
+      volumes:
+        - name: vol-asff00-0-111-config-prometheus
+          configMap:
+            name: asff00.0.111.config.prometheus
+        - name: vol-asff00-0-111-config-crypto-as
+          configMap:
+            name: asff00.0.111.config.crypto.as
+        - name: vol-asff00-0-111-config-crypto
+          configMap:
+            name: asff00.0.111.config.crypto
+        - name: vol-asff00-0-111-config-keys
+          configMap:
+            name: asff00.0.111.config.keys
+        - name: vol-asff00-0-111-config-certs
+          configMap:
+            name: asff00.0.111.config.certs
+        - name: vol-asff00-0-111-config
+          configMap:
+            name: asff00.0.111.config
+status: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: scion-cs1-ff00-0-111-1-svc # clear-nginx-service.scion scion-br1-ff00-0-110-1-svc.scion
+spec:
+  selector:
+    service: scion-cs1-ff00-0-111-1
+  ports:
+  - name: public
+    port: 30252
+    protocol: UDP
+    targetPort: 30252
+  - name: dispatcher
+    port: 30041
+    protocol: UDP
+    targetPort: 30041
+  - name: quicserver
+    port: 30033
+    protocol: UDP
+    targetPort: 30033
+  - name: quicclient
+    port: 30034
+    protocol: UDP
+    targetPort: 30034
+  - name: quicdiscoveryservice
+    port: 30035
+    protocol: UDP
+    targetPort: 30035

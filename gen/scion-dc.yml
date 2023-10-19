@@ -1,0 +1,321 @@
+networks:
+  scn_000:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: scn_000
+    ipam:
+      config:
+      - subnet: 172.20.0.0/29
+  scn_001:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: scn_001
+    ipam:
+      config:
+      - subnet: 172.20.0.8/29
+  scn_002:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: scn_002
+    ipam:
+      config:
+      - subnet: 172.20.0.16/29
+  scn_003:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: scn_003
+    ipam:
+      config:
+      - subnet: 172.20.0.24/29
+  scn_004:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: scn_004
+    ipam:
+      config:
+      - subnet: 172.20.0.32/29
+services:
+  scion_br1-ff00_0_110-1:
+    command:
+    - --config
+    - /share/conf/br1-ff00_0_110-1.toml
+    container_name: scion_br1-ff00_0_110-1
+    environment:
+      SCION_EXPERIMENTAL_BFD_DESIRED_MIN_TX: ${SCION_EXPERIMENTAL_BFD_DESIRED_MIN_TX}
+      SCION_EXPERIMENTAL_BFD_DETECT_MULT: ${SCION_EXPERIMENTAL_BFD_DETECT_MULT}
+      SCION_EXPERIMENTAL_BFD_REQUIRED_MIN_RX: ${SCION_EXPERIMENTAL_BFD_REQUIRED_MIN_RX}
+    image: posix-router
+    networks:
+      scn_000:
+        ipv4_address: 172.20.0.2
+      scn_002:
+        ipv4_address: 172.20.0.18
+    user: 1000:1000
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen/ASff00_0_110:/share/conf:ro
+  scion_br1-ff00_0_110-2:
+    command:
+    - --config
+    - /share/conf/br1-ff00_0_110-2.toml
+    container_name: scion_br1-ff00_0_110-2
+    environment:
+      SCION_EXPERIMENTAL_BFD_DESIRED_MIN_TX: ${SCION_EXPERIMENTAL_BFD_DESIRED_MIN_TX}
+      SCION_EXPERIMENTAL_BFD_DETECT_MULT: ${SCION_EXPERIMENTAL_BFD_DETECT_MULT}
+      SCION_EXPERIMENTAL_BFD_REQUIRED_MIN_RX: ${SCION_EXPERIMENTAL_BFD_REQUIRED_MIN_RX}
+    image: posix-router
+    networks:
+      scn_001:
+        ipv4_address: 172.20.0.10
+      scn_002:
+        ipv4_address: 172.20.0.19
+    user: 1000:1000
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen/ASff00_0_110:/share/conf:ro
+  scion_br1-ff00_0_111-1:
+    command:
+    - --config
+    - /share/conf/br1-ff00_0_111-1.toml
+    container_name: scion_br1-ff00_0_111-1
+    environment:
+      SCION_EXPERIMENTAL_BFD_DESIRED_MIN_TX: ${SCION_EXPERIMENTAL_BFD_DESIRED_MIN_TX}
+      SCION_EXPERIMENTAL_BFD_DETECT_MULT: ${SCION_EXPERIMENTAL_BFD_DETECT_MULT}
+      SCION_EXPERIMENTAL_BFD_REQUIRED_MIN_RX: ${SCION_EXPERIMENTAL_BFD_REQUIRED_MIN_RX}
+    image: posix-router
+    networks:
+      scn_000:
+        ipv4_address: 172.20.0.3
+      scn_003:
+        ipv4_address: 172.20.0.26
+    user: 1000:1000
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen/ASff00_0_111:/share/conf:ro
+  scion_br1-ff00_0_112-1:
+    command:
+    - --config
+    - /share/conf/br1-ff00_0_112-1.toml
+    container_name: scion_br1-ff00_0_112-1
+    environment:
+      SCION_EXPERIMENTAL_BFD_DESIRED_MIN_TX: ${SCION_EXPERIMENTAL_BFD_DESIRED_MIN_TX}
+      SCION_EXPERIMENTAL_BFD_DETECT_MULT: ${SCION_EXPERIMENTAL_BFD_DETECT_MULT}
+      SCION_EXPERIMENTAL_BFD_REQUIRED_MIN_RX: ${SCION_EXPERIMENTAL_BFD_REQUIRED_MIN_RX}
+    image: posix-router
+    networks:
+      scn_001:
+        ipv4_address: 172.20.0.11
+      scn_004:
+        ipv4_address: 172.20.0.34
+    user: 1000:1000
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen/ASff00_0_112:/share/conf:ro
+  scion_cs1-ff00_0_110-1:
+    command:
+    - --config
+    - /share/conf/cs1-ff00_0_110-1.toml
+    container_name: scion_cs1-ff00_0_110-1
+    depends_on:
+    - scion_disp_cs1-ff00_0_110-1
+    image: control
+    network_mode: service:scion_disp_cs1-ff00_0_110-1
+    user: 1000:1000
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen/ASff00_0_110:/share/conf:ro
+  scion_cs1-ff00_0_111-1:
+    command:
+    - --config
+    - /share/conf/cs1-ff00_0_111-1.toml
+    container_name: scion_cs1-ff00_0_111-1
+    depends_on:
+    - scion_disp_cs1-ff00_0_111-1
+    image: control
+    network_mode: service:scion_disp_cs1-ff00_0_111-1
+    user: 1000:1000
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen/ASff00_0_111:/share/conf:ro
+  scion_cs1-ff00_0_112-1:
+    command:
+    - --config
+    - /share/conf/cs1-ff00_0_112-1.toml
+    container_name: scion_cs1-ff00_0_112-1
+    depends_on:
+    - scion_disp_cs1-ff00_0_112-1
+    image: control
+    network_mode: service:scion_disp_cs1-ff00_0_112-1
+    user: 1000:1000
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen/ASff00_0_112:/share/conf:ro
+  scion_disp_cs1-ff00_0_110-1:
+    command:
+    - --config
+    - /share/conf/disp_cs1-ff00_0_110-1.toml
+    container_name: scion_disp_cs1-ff00_0_110-1
+    extra_hosts:
+    - jaeger:172.17.0.1
+    image: dispatcher
+    networks:
+      scn_002:
+        ipv4_address: 172.20.0.20
+    user: 1000:1000
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen/ASff00_0_110:/share/conf:rw
+  scion_disp_cs1-ff00_0_111-1:
+    command:
+    - --config
+    - /share/conf/disp_cs1-ff00_0_111-1.toml
+    container_name: scion_disp_cs1-ff00_0_111-1
+    extra_hosts:
+    - jaeger:172.17.0.1
+    image: dispatcher
+    networks:
+      scn_003:
+        ipv4_address: 172.20.0.27
+    user: 1000:1000
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen/ASff00_0_111:/share/conf:rw
+  scion_disp_cs1-ff00_0_112-1:
+    command:
+    - --config
+    - /share/conf/disp_cs1-ff00_0_112-1.toml
+    container_name: scion_disp_cs1-ff00_0_112-1
+    extra_hosts:
+    - jaeger:172.17.0.1
+    image: dispatcher
+    networks:
+      scn_004:
+        ipv4_address: 172.20.0.35
+    user: 1000:1000
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen/ASff00_0_112:/share/conf:rw
+  scion_disp_tester_1-ff00_0_110:
+    command:
+    - --config
+    - /share/conf/disp_tester_1-ff00_0_110.toml
+    container_name: scion_disp_tester_1-ff00_0_110
+    extra_hosts:
+    - jaeger:172.17.0.1
+    image: dispatcher
+    networks:
+      scn_002:
+        ipv4_address: 172.20.0.22
+    user: 1000:1000
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen/ASff00_0_110:/share/conf:rw
+  scion_disp_tester_1-ff00_0_111:
+    command:
+    - --config
+    - /share/conf/disp_tester_1-ff00_0_111.toml
+    container_name: scion_disp_tester_1-ff00_0_111
+    extra_hosts:
+    - jaeger:172.17.0.1
+    image: dispatcher
+    networks:
+      scn_003:
+        ipv4_address: 172.20.0.29
+    user: 1000:1000
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen/ASff00_0_111:/share/conf:rw
+  scion_disp_tester_1-ff00_0_112:
+    command:
+    - --config
+    - /share/conf/disp_tester_1-ff00_0_112.toml
+    container_name: scion_disp_tester_1-ff00_0_112
+    extra_hosts:
+    - jaeger:172.17.0.1
+    image: dispatcher
+    networks:
+      scn_004:
+        ipv4_address: 172.20.0.37
+    user: 1000:1000
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen/ASff00_0_112:/share/conf:rw
+  scion_sd1-ff00_0_110:
+    command:
+    - --config
+    - /share/conf/sd.toml
+    container_name: scion_sd1-ff00_0_110
+    depends_on:
+    - scion_disp_cs1-ff00_0_110-1
+    extra_hosts:
+    - jaeger:172.17.0.1
+    image: daemon
+    networks:
+      scn_002:
+        ipv4_address: 172.20.0.21
+    user: 1000:1000
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen/ASff00_0_110:/share/conf:ro
+  scion_sd1-ff00_0_111:
+    command:
+    - --config
+    - /share/conf/sd.toml
+    container_name: scion_sd1-ff00_0_111
+    depends_on:
+    - scion_disp_cs1-ff00_0_111-1
+    extra_hosts:
+    - jaeger:172.17.0.1
+    image: daemon
+    networks:
+      scn_003:
+        ipv4_address: 172.20.0.28
+    user: 1000:1000
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen/ASff00_0_111:/share/conf:ro
+  scion_sd1-ff00_0_112:
+    command:
+    - --config
+    - /share/conf/sd.toml
+    container_name: scion_sd1-ff00_0_112
+    depends_on:
+    - scion_disp_cs1-ff00_0_112-1
+    extra_hosts:
+    - jaeger:172.17.0.1
+    image: daemon
+    networks:
+      scn_004:
+        ipv4_address: 172.20.0.36
+    user: 1000:1000
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen/ASff00_0_112:/share/conf:ro
+  tester_1-ff00_0_110:
+    container_name: tester_1-ff00_0_110
+    depends_on:
+    - scion_disp_tester_1-ff00_0_110
+    entrypoint: sh tester.sh
+    environment:
+      SCION_DAEMON: 172.20.0.21:30255
+      SCION_LOCAL_ADDR: 172.20.0.22
+    image: tester
+    network_mode: service:scion_disp_tester_1-ff00_0_110
+    privileged: true
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen:/share/gen:rw
+    - /home/jelte/GolandProjects/scion/gen-certs:/share/gen-certs:rw
+  tester_1-ff00_0_111:
+    container_name: tester_1-ff00_0_111
+    depends_on:
+    - scion_disp_tester_1-ff00_0_111
+    entrypoint: sh tester.sh
+    environment:
+      SCION_DAEMON: 172.20.0.28:30255
+      SCION_LOCAL_ADDR: 172.20.0.29
+    image: tester
+    network_mode: service:scion_disp_tester_1-ff00_0_111
+    privileged: true
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen:/share/gen:rw
+    - /home/jelte/GolandProjects/scion/gen-certs:/share/gen-certs:rw
+  tester_1-ff00_0_112:
+    container_name: tester_1-ff00_0_112
+    depends_on:
+    - scion_disp_tester_1-ff00_0_112
+    entrypoint: sh tester.sh
+    environment:
+      SCION_DAEMON: 172.20.0.36:30255
+      SCION_LOCAL_ADDR: 172.20.0.37
+    image: tester
+    network_mode: service:scion_disp_tester_1-ff00_0_112
+    privileged: true
+    volumes:
+    - /home/jelte/GolandProjects/scion/gen:/share/gen:rw
+    - /home/jelte/GolandProjects/scion/gen-certs:/share/gen-certs:rw
+version: '2.4'
+volumes: {}

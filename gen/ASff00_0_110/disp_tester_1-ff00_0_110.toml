@@ -1,0 +1,12 @@
+[dispatcher]
+id = "disp_tester_1-ff00_0_110"
+config_dir = "/share/conf"
+
+[metrics]
+
+[features]
+
+[api]
+
+[log.console]
+level = "debug"

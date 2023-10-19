@@ -1,0 +1,37 @@
+First need to get the docker images in a registry such that they can be used by
+Kubernetes:
+
+
+Locally build scion with;
+make docker-images
+
+Then push to the repository at digitalocean;
+
+1. Create a token at https://cloud.digitalocean.com/account/api/tokens
+
+2. docker login registry.digitalocean.com
+username and password are the token
+
+3.
+docker tag posix-router:latest registry.digitalocean.com/scion-on-kubernetes/posix-router:latest
+docker tag control:latest registry.digitalocean.com/scion-on-kubernetes/control:latest
+docker tag dispatcher:latest registry.digitalocean.com/scion-on-kubernetes/dispatcher:latest
+docker tag daemon:latest registry.digitalocean.com/scion-on-kubernetes/daemon:latest
+docker tag tester:latest registry.digitalocean.com/scion-on-kubernetes/tester:latest
+
+docker push registry.digitalocean.com/scion-on-kubernetes/posix-router:latest
+docker push registry.digitalocean.com/scion-on-kubernetes/control:latest
+docker push registry.digitalocean.com/scion-on-kubernetes/dispatcher:latest
+docker push registry.digitalocean.com/scion-on-kubernetes/daemon:latest
+docker push registry.digitalocean.com/scion-on-kubernetes/tester:latest
+
+4.
+
+(venv)  ~/P/pythonProject  py[venv]  kubectl --kubeconfig=jvanbommel-test-k8s-kubeconfig.yaml apply -f handcrafted --namespace=scion^C
+(venv)  ~/P/pythonProject  py[venv]  kubectl --kubeconfig=jvanbommel-test-k8s-kubeconfig.yaml rollout restart deployment -n scion
+
+
+Make sure you replace the crypto under gen folder if they have expired.
+./scion.sh topology --docker -c topology/tiny4.topo
+
+And copy over the certs, crypto and keys folders IN EACH AS, as well as certs ISD1 and trcs

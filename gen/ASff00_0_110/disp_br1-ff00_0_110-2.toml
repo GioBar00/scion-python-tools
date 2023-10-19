@@ -1,0 +1,14 @@
+[dispatcher]
+id = "disp_br1-ff00_0_110-2"
+config_dir = "/share/conf"
+
+[metrics]
+prometheus = "[172.20.0.19]:30441"
+
+[features]
+
+[api]
+addr = "[172.20.0.19]:31141"
+
+[log.console]
+level = "debug"

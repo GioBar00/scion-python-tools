@@ -1,0 +1,31 @@
+[general]
+id = "cs1-ff00_0_112-1"
+config_dir = "/share/conf"
+
+[trust_db]
+connection = "/share/cache/cs1-ff00_0_112-1.trust.db"
+
+[beacon_db]
+connection = "/share/cache/cs1-ff00_0_112-1.beacon.db"
+
+[path_db]
+connection = "/share/cache/cs1-ff00_0_112-1.path.db"
+
+[tracing]
+enabled = false
+
+[quic]
+address_server = "0.0.0.0:30052"
+address_client = "0.0.0.0:30034"
+address_svcredirect = "0.0.0.0:30252"
+
+[metrics]
+prometheus = "0.0.0.0:30452"
+
+[api]
+addr = "0.0.0.0:31152"
+
+[features]
+
+[log.console]
+level = "debug"
