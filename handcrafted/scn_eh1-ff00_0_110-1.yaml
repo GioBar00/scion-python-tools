@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: scion-eh1-ff00-0-110-1
+  name: scion-eh1-ff00-0-110-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: scion-eh1-ff00-0-110-1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: scion-eh1-ff00-0-110-1
+        scionlinks/scn-004: "true"
+    spec:
+      initContainers:
+        - name: init
+          image: busybox:1.28
+          command: [ 'sh', '-c', 'sleep 5' ]
+      containers:
+        - args:
+            - --config
+            - /share/conf/sd.toml
+          image: registry.digitalocean.com/scion-on-kubernetes/endhost:latest
+          name: scion-eh1-ff00-0-110-1-eh
+          volumeMounts:
+            - mountPath: /share/conf/prometheus
+              name: vol-asff00-0-110-config-prometheus
+            - mountPath: /share/conf/crypto/as
+              name: vol-asff00-0-110-config-crypto-as
+            - mountPath: /share/conf/crypto
+              name: vol-asff00-0-110-config-crypto
+            - mountPath: /share/conf/keys
+              name: vol-asff00-0-110-config-keys
+            - mountPath: /share/conf/certs
+              name: vol-asff00-0-110-config-certs
+            - mountPath: /share/conf/
+              name: vol-asff00-0-110-config
+      restartPolicy: Always
+      volumes:
+        - name: vol-asff00-0-110-config-prometheus
+          configMap:
+            name: asff00.0.110.config.prometheus
+        - name: vol-asff00-0-110-config-crypto-as
+          configMap:
+            name: asff00.0.110.config.crypto.as
+        - name: vol-asff00-0-110-config-crypto
+          configMap:
+            name: asff00.0.110.config.crypto
+        - name: vol-asff00-0-110-config-keys
+          configMap:
+            name: asff00.0.110.config.keys
+        - name: vol-asff00-0-110-config-certs
+          configMap:
+            name: asff00.0.110.config.certs
+        - name: vol-asff00-0-110-config
+          configMap:
+            name: asff00.0.110.config
+status: {}

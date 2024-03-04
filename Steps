@@ -42,3 +42,20 @@ kubectl --kubeconfig=jvanbommel-test-k8s-kubeconfig.yaml delete pod busybox -n s
 (venv)  ~/P/pythonProject  py[venv]   master ±  kubectl --kubeconfig=jvanbommel-test-k8s-kubeconfig.yaml run busybox --tty -i --image=busybox --restart=Never -n scion -- sh
 
 kubectl --kubeconfig=jvanbommel-test-k8s-kubeconfig.yaml exec -it busybox --tty -i -n scion -- sh
+
+
+
+5.
+Connect into two of the eh vms;
+execute:
+bin/scion address
+
+bin/end2end --remote "1-ff00:00:112,10.244.0.134" --mode client
+
+bin/scion address
+bin/end2end --local "1-ff00:00:112,10.244.0.134" --mode server
+
+
+Check border router logs => it is actually getting routed via scion.
+
+while :; do bin/end2end --remote "1-ff00:00:112,10.244.0.134:1025" --local "1-ff00:00:111,10.244.0.189" --mode client; done;

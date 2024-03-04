@@ -97,7 +97,7 @@ class KubernetesGenerator():
 
 def main():
 
-    shutil.rmtree('gen')
+    shutil.rmtree('gen2')
     kgen = KubernetesGenerator()
     nodes, links = parseXML("tier1.xml")
     sorted_nodes = sorted(nodes, key=lambda x: x['interface_count'], reverse=True)

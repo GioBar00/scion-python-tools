@@ -9,20 +9,18 @@ connection = "/share/cache/sd1-ff00_0_111.trust.db"
 connection = "/share/cache/sd1-ff00_0_111.path.db"
 
 [sd]
-address = "172.20.0.28:30255"
+address = "0.0.0.0:30255"
 
 [tracing]
-enabled = true
-debug = true
-agent = "172.17.0.1:6831"
+enabled = false
 
 [metrics]
-prometheus = "172.20.0.28:30455"
+prometheus = "0.0.0.0:30452"
 
 [features]
 
 [api]
-addr = "172.20.0.28:30955"
+addr = "0.0.0.0:30955"
 
 [log.console]
 level = "debug"

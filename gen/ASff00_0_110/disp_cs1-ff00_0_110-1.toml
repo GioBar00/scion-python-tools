@@ -1,12 +1,15 @@
 [dispatcher]
 id = "disp_cs1-ff00_0_110-1"
-config_dir = "/share/conf"
 
 [metrics]
 
 [features]
 
 [api]
+
+[dispatcher.service_addresses]
+"1-ff00:0:110,CS" = "scion-cs1-ff00-0-110-1-svc.scion:30252"
+"1-ff00:0:110,DS" = "scion-cs1-ff00-0-110-1-svc.scion:30252"
 
 [log.console]
 level = "debug"

@@ -18,8 +18,6 @@ spec:
         scionlinks/scn-002: "true"
         service: scion-br1-ff00-0-110-1
     spec:
-      hostname: br1
-      subdomain: test
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
@@ -81,74 +79,6 @@ spec:
           configMap:
             name: asff00.0.110.config
 status: {}
-#
-#apiVersion: v1
-#kind: Pod
-#metadata:
-#  name: scion-br1-ff00-0-110-1
-#  labels:
-#    scionlinks/scn-000: "true"
-#    scionlinks/scn-002: "true"
-#    service: scion-br1-ff00-0-110-1
-#spec:
-#  hostname: br1
-#  subdomain: test
-#  securityContext:
-#    runAsUser: 1000
-#    runAsGroup: 1000
-#  containers:
-#    - args:
-#        - --config
-#        - /share/conf/br1-ff00_0_110-1.toml
-#      env:
-#        - name: SCION_EXPERIMENTAL_BFD_DESIRED_MIN_TX
-#        - name: SCION_EXPERIMENTAL_BFD_DETECT_MULT
-#        - name: SCION_EXPERIMENTAL_BFD_REQUIRED_MIN_RX
-#      image: registry.digitalocean.com/scion-on-kubernetes/posix-router:latest
-#      name: scion-br1-ff00-0-110-1
-#      volumeMounts:
-#        - mountPath: /share/conf/prometheus
-#          name: vol-asff00-0-110-config-prometheus
-#        - mountPath: /share/conf/crypto/as
-#          name: vol-asff00-0-110-config-crypto-as
-#        - mountPath: /share/conf/crypto/ca
-#          name: vol-asff00-0-110-config-crypto-ca
-#        - mountPath: /share/conf/crypto/voting
-#          name: vol-asff00-0-110-config-crypto-voting
-#        - mountPath: /share/conf/crypto
-#          name: vol-asff00-0-110-config-crypto
-#        - mountPath: /share/conf/keys
-#          name: vol-asff00-0-110-config-keys
-#        - mountPath: /share/conf/certs
-#          name: vol-asff00-0-110-config-certs
-#        - mountPath: /share/conf/
-#          name: vol-asff00-0-110-config
-#  restartPolicy: Always
-#  volumes:
-#    - name: vol-asff00-0-110-config-prometheus
-#      configMap:
-#        name: asff00.0.110.config.prometheus
-#    - name: vol-asff00-0-110-config-crypto-as
-#      configMap:
-#        name: asff00.0.110.config.crypto.as
-#    - name: vol-asff00-0-110-config-crypto-ca
-#      configMap:
-#        name: asff00.0.110.config.crypto.ca
-#    - name: vol-asff00-0-110-config-crypto-voting
-#      configMap:
-#        name: asff00.0.110.config.crypto.voting
-#    - name: vol-asff00-0-110-config-crypto
-#      configMap:
-#        name: asff00.0.110.config.crypto
-#    - name: vol-asff00-0-110-config-keys
-#      configMap:
-#        name: asff00.0.110.config.keys
-#    - name: vol-asff00-0-110-config-certs
-#      configMap:
-#        name: asff00.0.110.config.certs
-#    - name: vol-asff00-0-110-config
-#      configMap:
-#        name: asff00.0.110.config
 ---
 apiVersion: v1
 kind: Service

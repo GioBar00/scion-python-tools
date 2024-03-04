@@ -3,6 +3,7 @@
     "core"
   ],
   "isd_as": "1-ff00:0:110",
+  "endhost_port_range": "1024-65535",
   "mtu": 1400,
   "control_service": {
     "cs1-ff00_0_110-1": {
