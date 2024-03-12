@@ -43,6 +43,7 @@ class KubernetesConfigMapGenerator(object):
 
     def generate_br_deployments(self, topo_id, topo, generated_maps):
         br_ports = [50000, 30042, 30043, 30044, 30045, 30046, 30047, 30048, 30049, 30050, 30051]
+        br_ports.extend(list(range(50001, 50020)))
         allowed_dirs = ['prometheus', 'crypto/as', 'crypto/ca', 'crypto/voting', 'crypto', 'keys', 'certs', '']
         for k, v in topo.get("border_routers", {}).items():
             dep_name = re.sub('[^0-9a-z]+', '-',k)
@@ -92,6 +93,14 @@ class KubernetesConfigMapGenerator(object):
                                   "image": "registry.digitalocean.com/scion-on-kubernetes/posix-router:latest",
                                   "name": dep_name,
                                   "volumeMounts": [],
+                                  "resources": {
+                                      "limits": {
+                                          "cpu": "0.5"
+                                      },
+                                      "requests": {
+                                          "cpu": "100m"
+                                      }
+                                  }
                               }],
                               "restartPolicy": "Always",
                               "volumes": []
@@ -176,12 +185,21 @@ class KubernetesConfigMapGenerator(object):
                                   "image": "registry.digitalocean.com/scion-on-kubernetes/control:latest",
                                   "name": dep_name,
                                   "volumeMounts": [],  # todo
-                              }, {
-                                  "args": ["--config", "/share/conf/disp_" + k + ".toml"],
-                                  "image": "registry.digitalocean.com/scion-on-kubernetes/dispatcher:latest",
-                                  "name": "disp-" + dep_name,
-                                  "volumeMounts": [],
-                              }
+                                  "resources": {
+                                      "limits": {
+                                          "cpu": "0.5"
+                                      },
+                                      "requests": {
+                                          "cpu": "100m"
+                                      }
+                                  }
+                              },
+                              #     {
+                              #     "args": ["--config", "/share/conf/disp_" + k + ".toml"],
+                              #     "image": "registry.digitalocean.com/scion-on-kubernetes/dispatcher:latest",
+                              #     "name": "disp-" + dep_name,
+                              #     "volumeMounts": [],
+                              # }
                               ],
                               "restartPolicy": "Always",
                               "volumes": []

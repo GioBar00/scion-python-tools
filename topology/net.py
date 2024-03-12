@@ -55,8 +55,9 @@ class NetworkDescription(object):
 
 
 class KubernetesService(object):
-    def __init__(self, ip: str):
+    def __init__(self, ip: str, port:int = None):
         self.ip = ip
+        self.port = port
 
 class AddressProxy(yaml.YAMLObject):
     yaml_tag = ""
@@ -64,6 +65,7 @@ class AddressProxy(yaml.YAMLObject):
     def __init__(self):
         self._intf = None
         self.ip = None
+        self.port = None
 
     def set_intf(self, intf):
         self._intf = intf

@@ -1,10 +1,12 @@
 ## Some useful commands:
+export KUBECONFIG=
 
-
+Create a topology
+ ./topogen.py -c dockergen.topo -k --kube-push-config --kube-config kubeconfig.yaml --kube-ns scion
 
 **Delete all deployments:**
-kubectl --kubeconfig=kubeconfig.yaml delete deployment --all -n=scion
-
+`kubectl --kubeconfig=kubeconfig.yaml delete deployment --all -n=scion
+`
 **Deploy all generated:**
 kubectl --kubeconfig=kubeconfig.yaml apply -f gen/kube/ --namespace=scion
 
@@ -12,7 +14,7 @@ kubectl --kubeconfig=kubeconfig.yaml apply -f gen/kube/ --namespace=scion
 kubectl --kubeconfig=kubeconfig.yaml rollout restart deployment -n scion
 
 **View monitor:**
-
+kubectl --kubeconfig=kubeconfig.yaml  apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
 ```kubectl --kubeconfig=kubeconfig.yaml proxy```
 
 http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/

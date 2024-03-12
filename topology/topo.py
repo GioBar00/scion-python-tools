@@ -98,6 +98,8 @@ class TopoGenerator(object):
         self.as_list = defaultdict(list)
         self.links = defaultdict(list)
         self.ifid_map = {}
+        self.kube_links_ports_map = {}
+        self.kube_assigned_ports = {}
 
     def _reg_addr(self, topo_id: TopoID, elem_id, addr_type):
         if self.args.kubernetes:
@@ -113,13 +115,34 @@ class TopoGenerator(object):
     def _reg_link_addrs(self, local_br, remote_br, local_ifid, remote_ifid, addr_type):
         link_name = str(sorted((local_br, remote_br)))
         link_name += str(sorted((local_ifid, remote_ifid)))
+        if self.args.kubernetes:
+            return self._reg_kube_port(link_name, local_br, remote_br)
+
         subnet = self.args.subnet_gen[addr_type].register(link_name)
+
         if self.args.docker and addr_type == ADDR_TYPE_6:
             # for docker also allocate an IPv4 address so that we have ipv4
             # range allocated for the network.
             v4subnet = self.args.subnet_gen[ADDR_TYPE_4].register(link_name + '_v4')
             v4subnet.register(local_br + '_v4')
         return subnet.register(local_br), subnet.register(remote_br)
+
+    def _assign_kube_ports(self, link_name, sorted_brs):
+        # Store in a sorted order for consistency
+        for bridge in sorted_brs:
+            port = self.kube_assigned_ports.setdefault(bridge, SCION_ROUTER_PORT) + 1
+            self.kube_assigned_ports[bridge] = port
+            self.kube_links_ports_map.setdefault(link_name, []).append(port)
+
+    def _reg_kube_port(self, link_name, local_br, remote_br):
+        if link_name not in self.kube_links_ports_map:
+            self._assign_kube_ports(link_name, sorted((local_br, remote_br)))
+
+        lport, rport = (self.kube_links_ports_map[link_name] if local_br < remote_br
+                        else self.kube_links_ports_map[link_name][::-1])
+
+        return (KubernetesService(f"{local_br.replace('_', '-')}-svc.scion", lport),
+                KubernetesService(f"{remote_br.replace('_', '-')}-svc.scion", rport))
 
     def _iterate(self, f):
         for isd_as, as_conf in self.args.topo_config_dict["ASes"].items():
@@ -309,11 +332,12 @@ class TopoGenerator(object):
 
         public_addr, remote_addr = self._reg_link_addrs(local_br, remote_br, l_ifid,
                                                         r_ifid, link_addr_type)
-
+        if public_addr.port is None:
+            public_addr.port = SCION_ROUTER_PORT
+        if remote_addr.port is None:
+            remote_addr.port = SCION_ROUTER_PORT
         intl_addr = self._reg_addr(local, local_br + "_internal", addr_type)
         if self.args.kubernetes:
-            public_addr = KubernetesService(f"{local_br.replace('_', '-')}-svc.scion")
-            remote_addr = KubernetesService(f"{remote_br.replace('_', '-')}-svc.scion")
             intl_addr = KubernetesService(f"{local_br.replace('_', '-')}-svc.scion")
 
         intf = self._gen_br_intf(remote, r_ifid, public_addr, remote_addr, attrs, remote_type)
@@ -337,15 +361,15 @@ class TopoGenerator(object):
         link_to = remote_type.name.lower()
         intf = {
             'underlay': {
-                'public': join_host_port(public_addr.ip, SCION_ROUTER_PORT),
-                'remote': join_host_port(remote_addr.ip, SCION_ROUTER_PORT),
+                'public': join_host_port(public_addr.ip, public_addr.port),
+                'remote': join_host_port(remote_addr.ip, remote_addr.port),
             },
             'isd_as': str(remote),
             'link_to': link_to,
             'mtu': attrs.get('mtu', self.args.default_mtu),
         }
-        if self.args.kubernetes:
-            intf['underlay']['bind'] = '0.0.0.0'
+        # if self.args.kubernetes:
+        #     intf['underlay']['bind'] = '0.0.0.0'
         if link_to == 'peer':
             intf['remote_interface_id'] = r_ifid
         return intf
