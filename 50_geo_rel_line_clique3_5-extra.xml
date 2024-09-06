@@ -1,0 +1,995 @@
+<topology linkdefault="directed">
+  <property name="name" type="string" />
+  <property name="type" type="string">caida_as_relationships</property>
+  <property name="capacity_unit" type="string">Mbps</property>
+  <node id="1" id.type="int">
+    <property name="latency_coef" type="float">0.7574648319291197</property>
+    <property name="bandwidth_coef" type="float">0.8187050078454461</property>
+    <property name="AS_level_diversity_coef" type="float">0.4617039331805295</property>
+    <property name="link_level_diversity_coef" type="float">0.32130066410198477</property>
+    <property name="interface_count" type="int">300</property>
+  </node>
+  <node id="2" id.type="int">
+    <property name="latency_coef" type="float">0.6146810319048971</property>
+    <property name="bandwidth_coef" type="float">0.9602647430568437</property>
+    <property name="AS_level_diversity_coef" type="float">0.28759137877961893</property>
+    <property name="link_level_diversity_coef" type="float">0.5063599490107941</property>
+    <property name="interface_count" type="int">317</property>
+  </node>
+  <node id="3" id.type="int">
+    <property name="latency_coef" type="float">0.08610134886381249</property>
+    <property name="bandwidth_coef" type="float">0.3749734843165584</property>
+    <property name="AS_level_diversity_coef" type="float">0.9932078803574755</property>
+    <property name="link_level_diversity_coef" type="float">0.8673914810679076</property>
+    <property name="interface_count" type="int">225</property>
+  </node>
+  <node id="4" id.type="int">
+    <property name="latency_coef" type="float">0.2832530709027975</property>
+    <property name="bandwidth_coef" type="float">0.1735550243293763</property>
+    <property name="AS_level_diversity_coef" type="float">0.9922927283913292</property>
+    <property name="link_level_diversity_coef" type="float">0.48738675814750043</property>
+    <property name="interface_count" type="int">421</property>
+  </node>
+  <node id="5" id.type="int">
+    <property name="latency_coef" type="float">0.1671546546768693</property>
+    <property name="bandwidth_coef" type="float">0.5195571895954771</property>
+    <property name="AS_level_diversity_coef" type="float">0.4363673991542516</property>
+    <property name="link_level_diversity_coef" type="float">0.9677412235852392</property>
+    <property name="interface_count" type="int">40</property>
+  </node>
+  <node id="6" id.type="int">
+    <property name="latency_coef" type="float">0.529370899141294</property>
+    <property name="bandwidth_coef" type="float">0.20722885979248973</property>
+    <property name="AS_level_diversity_coef" type="float">0.7304639341985345</property>
+    <property name="link_level_diversity_coef" type="float">0.0760471241158639</property>
+    <property name="interface_count" type="int">374</property>
+  </node>
+  <node id="7" id.type="int">
+    <property name="latency_coef" type="float">0.9111029123776624</property>
+    <property name="bandwidth_coef" type="float">0.44664649691103053</property>
+    <property name="AS_level_diversity_coef" type="float">0.12194687576212748</property>
+    <property name="link_level_diversity_coef" type="float">0.25833429245994266</property>
+    <property name="interface_count" type="int">154</property>
+  </node>
+  <node id="8" id.type="int">
+    <property name="latency_coef" type="float">0.05781753910358134</property>
+    <property name="bandwidth_coef" type="float">0.032740673220708394</property>
+    <property name="AS_level_diversity_coef" type="float">0.1936859646295569</property>
+    <property name="link_level_diversity_coef" type="float">0.6736170368890244</property>
+    <property name="interface_count" type="int">183</property>
+  </node>
+  <node id="9" id.type="int">
+    <property name="latency_coef" type="float">0.8795021876486537</property>
+    <property name="bandwidth_coef" type="float">0.9074522382169015</property>
+    <property name="AS_level_diversity_coef" type="float">0.08615777667042157</property>
+    <property name="link_level_diversity_coef" type="float">0.42472386226310244</property>
+    <property name="interface_count" type="int">48</property>
+  </node>
+  <node id="10" id.type="int">
+    <property name="latency_coef" type="float">0.04773738588406107</property>
+    <property name="bandwidth_coef" type="float">0.7879182845009954</property>
+    <property name="AS_level_diversity_coef" type="float">0.7030016295298085</property>
+    <property name="link_level_diversity_coef" type="float">0.12593338365739493</property>
+    <property name="interface_count" type="int">158</property>
+  </node>
+  <node id="11" id.type="int">
+    <property name="latency_coef" type="float">0.7447065764825826</property>
+    <property name="bandwidth_coef" type="float">0.9362214212495338</property>
+    <property name="AS_level_diversity_coef" type="float">0.014258417793781009</property>
+    <property name="link_level_diversity_coef" type="float">0.6707289068775165</property>
+    <property name="interface_count" type="int">80</property>
+  </node>
+  <node id="12" id.type="int">
+    <property name="latency_coef" type="float">0.17756753961447125</property>
+    <property name="bandwidth_coef" type="float">0.4487563795286007</property>
+    <property name="AS_level_diversity_coef" type="float">0.10961927620713185</property>
+    <property name="link_level_diversity_coef" type="float">0.25875792160767963</property>
+    <property name="interface_count" type="int">48</property>
+  </node>
+  <node id="13" id.type="int">
+    <property name="latency_coef" type="float">0.649695908414566</property>
+    <property name="bandwidth_coef" type="float">0.34224810045667997</property>
+    <property name="AS_level_diversity_coef" type="float">0.12125899105186488</property>
+    <property name="link_level_diversity_coef" type="float">0.685744317440174</property>
+    <property name="interface_count" type="int">55</property>
+  </node>
+  <node id="14" id.type="int">
+    <property name="latency_coef" type="float">0.4399647196665951</property>
+    <property name="bandwidth_coef" type="float">0.07400373042327724</property>
+    <property name="AS_level_diversity_coef" type="float">0.7355503017851859</property>
+    <property name="link_level_diversity_coef" type="float">0.10569556220052945</property>
+    <property name="interface_count" type="int">72</property>
+  </node>
+  <node id="15" id.type="int">
+    <property name="latency_coef" type="float">0.5029365027593286</property>
+    <property name="bandwidth_coef" type="float">0.8017024454042864</property>
+    <property name="AS_level_diversity_coef" type="float">0.47051196237250803</property>
+    <property name="link_level_diversity_coef" type="float">0.948577689268534</property>
+    <property name="interface_count" type="int">144</property>
+  </node>
+  <node id="16" id.type="int">
+    <property name="latency_coef" type="float">0.5814207933987479</property>
+    <property name="bandwidth_coef" type="float">0.10171617831668922</property>
+    <property name="AS_level_diversity_coef" type="float">0.29529934186431683</property>
+    <property name="link_level_diversity_coef" type="float">0.8619113993575265</property>
+    <property name="interface_count" type="int">54</property>
+  </node>
+  <node id="17" id.type="int">
+    <property name="latency_coef" type="float">0.1559703604073378</property>
+    <property name="bandwidth_coef" type="float">0.22222792735739927</property>
+    <property name="AS_level_diversity_coef" type="float">0.6298210310206801</property>
+    <property name="link_level_diversity_coef" type="float">0.2187044804550169</property>
+    <property name="interface_count" type="int">90</property>
+  </node>
+  <node id="18" id.type="int">
+    <property name="latency_coef" type="float">0.9258813119590484</property>
+    <property name="bandwidth_coef" type="float">0.38741985315561545</property>
+    <property name="AS_level_diversity_coef" type="float">0.24300599237564824</property>
+    <property name="link_level_diversity_coef" type="float">0.8442021272624725</property>
+    <property name="interface_count" type="int">142</property>
+  </node>
+  <node id="19" id.type="int">
+    <property name="latency_coef" type="float">0.343880006530738</property>
+    <property name="bandwidth_coef" type="float">0.6857600377445613</property>
+    <property name="AS_level_diversity_coef" type="float">0.7666912371792228</property>
+    <property name="link_level_diversity_coef" type="float">0.7149728584382082</property>
+    <property name="interface_count" type="int">54</property>
+  </node>
+  <node id="20" id.type="int">
+    <property name="latency_coef" type="float">0.9453946234972769</property>
+    <property name="bandwidth_coef" type="float">0.7771578980339461</property>
+    <property name="AS_level_diversity_coef" type="float">0.7388601652699397</property>
+    <property name="link_level_diversity_coef" type="float">0.007151145494471933</property>
+    <property name="interface_count" type="int">176</property>
+  </node>
+  <node id="21" id.type="int">
+    <property name="latency_coef" type="float">0.4328031208869306</property>
+    <property name="bandwidth_coef" type="float">0.9699826777950186</property>
+    <property name="AS_level_diversity_coef" type="float">0.5557396803975514</property>
+    <property name="link_level_diversity_coef" type="float">0.20293429806497187</property>
+    <property name="interface_count" type="int">64</property>
+  </node>
+  <node id="22" id.type="int">
+    <property name="latency_coef" type="float">0.07672799879665748</property>
+    <property name="bandwidth_coef" type="float">0.7590154835157118</property>
+    <property name="AS_level_diversity_coef" type="float">0.8261864249154595</property>
+    <property name="link_level_diversity_coef" type="float">0.6390502126607241</property>
+    <property name="interface_count" type="int">52</property>
+  </node>
+  <node id="23" id.type="int">
+    <property name="latency_coef" type="float">0.5577429052085576</property>
+    <property name="bandwidth_coef" type="float">0.8102382795934714</property>
+    <property name="AS_level_diversity_coef" type="float">0.6839424312108485</property>
+    <property name="link_level_diversity_coef" type="float">0.10183112519281645</property>
+    <property name="interface_count" type="int">91</property>
+  </node>
+  <node id="24" id.type="int">
+    <property name="latency_coef" type="float">0.5270641844089514</property>
+    <property name="bandwidth_coef" type="float">0.4207496237620507</property>
+    <property name="AS_level_diversity_coef" type="float">0.9233809115335452</property>
+    <property name="link_level_diversity_coef" type="float">0.5827058095106807</property>
+    <property name="interface_count" type="int">35</property>
+  </node>
+  <node id="25" id.type="int">
+    <property name="latency_coef" type="float">0.4044724191204311</property>
+    <property name="bandwidth_coef" type="float">0.932976495258101</property>
+    <property name="AS_level_diversity_coef" type="float">0.2305222744409604</property>
+    <property name="link_level_diversity_coef" type="float">0.9176090613205644</property>
+    <property name="interface_count" type="int">58</property>
+  </node>
+  <node id="26" id.type="int">
+    <property name="latency_coef" type="float">0.7290542999432811</property>
+    <property name="bandwidth_coef" type="float">0.5085473524864889</property>
+    <property name="AS_level_diversity_coef" type="float">0.40266915385908364</property>
+    <property name="link_level_diversity_coef" type="float">0.5383713264495872</property>
+    <property name="interface_count" type="int">62</property>
+  </node>
+  <node id="27" id.type="int">
+    <property name="latency_coef" type="float">0.11867131609219295</property>
+    <property name="bandwidth_coef" type="float">0.8883474953938042</property>
+    <property name="AS_level_diversity_coef" type="float">0.5362064157007431</property>
+    <property name="link_level_diversity_coef" type="float">0.37996121811170436</property>
+    <property name="interface_count" type="int">55</property>
+  </node>
+  <node id="28" id.type="int">
+    <property name="latency_coef" type="float">0.34013306840561885</property>
+    <property name="bandwidth_coef" type="float">0.42339598483554564</property>
+    <property name="AS_level_diversity_coef" type="float">0.9143643765832675</property>
+    <property name="link_level_diversity_coef" type="float">0.8162219361567054</property>
+    <property name="interface_count" type="int">65</property>
+  </node>
+  <node id="29" id.type="int">
+    <property name="latency_coef" type="float">0.3941754714054161</property>
+    <property name="bandwidth_coef" type="float">0.878216288521841</property>
+    <property name="AS_level_diversity_coef" type="float">0.014982517240472948</property>
+    <property name="link_level_diversity_coef" type="float">0.19254962436130352</property>
+    <property name="interface_count" type="int">48</property>
+  </node>
+  <node id="30" id.type="int">
+    <property name="latency_coef" type="float">0.16782758144390575</property>
+    <property name="bandwidth_coef" type="float">0.3375837178152815</property>
+    <property name="AS_level_diversity_coef" type="float">0.5376002441531523</property>
+    <property name="link_level_diversity_coef" type="float">0.6305101389215575</property>
+    <property name="interface_count" type="int">51</property>
+  </node>
+  <node id="31" id.type="int">
+    <property name="latency_coef" type="float">0.3405304853174239</property>
+    <property name="bandwidth_coef" type="float">0.8386543189519607</property>
+    <property name="AS_level_diversity_coef" type="float">0.2439821546514157</property>
+    <property name="link_level_diversity_coef" type="float">0.8731904952736363</property>
+    <property name="interface_count" type="int">58</property>
+  </node>
+  <node id="32" id.type="int">
+    <property name="latency_coef" type="float">0.4517713635187601</property>
+    <property name="bandwidth_coef" type="float">0.34750964680502616</property>
+    <property name="AS_level_diversity_coef" type="float">0.06490158787772393</property>
+    <property name="link_level_diversity_coef" type="float">0.7712429296421281</property>
+    <property name="interface_count" type="int">36</property>
+  </node>
+  <node id="33" id.type="int">
+    <property name="latency_coef" type="float">0.21254467904192786</property>
+    <property name="bandwidth_coef" type="float">0.4346049285738963</property>
+    <property name="AS_level_diversity_coef" type="float">0.3108669034666386</property>
+    <property name="link_level_diversity_coef" type="float">0.05667740193421689</property>
+    <property name="interface_count" type="int">46</property>
+  </node>
+  <node id="34" id.type="int">
+    <property name="latency_coef" type="float">0.13905740131450017</property>
+    <property name="bandwidth_coef" type="float">0.6104188217528637</property>
+    <property name="AS_level_diversity_coef" type="float">0.08813352210233671</property>
+    <property name="link_level_diversity_coef" type="float">0.043814848440548504</property>
+    <property name="interface_count" type="int">61</property>
+  </node>
+  <node id="35" id.type="int">
+    <property name="latency_coef" type="float">0.6915624467266114</property>
+    <property name="bandwidth_coef" type="float">0.8158488558611894</property>
+    <property name="AS_level_diversity_coef" type="float">0.4337073725261672</property>
+    <property name="link_level_diversity_coef" type="float">0.8159667877126173</property>
+    <property name="interface_count" type="int">43</property>
+  </node>
+  <node id="36" id.type="int">
+    <property name="latency_coef" type="float">0.23259602511667143</property>
+    <property name="bandwidth_coef" type="float">0.5867296293434193</property>
+    <property name="AS_level_diversity_coef" type="float">0.9534951486900135</property>
+    <property name="link_level_diversity_coef" type="float">0.5421890311673448</property>
+    <property name="interface_count" type="int">151</property>
+  </node>
+  <node id="37" id.type="int">
+    <property name="latency_coef" type="float">0.8084404274497052</property>
+    <property name="bandwidth_coef" type="float">0.5625644539667368</property>
+    <property name="AS_level_diversity_coef" type="float">0.27945665698861843</property>
+    <property name="link_level_diversity_coef" type="float">0.8329539994391422</property>
+    <property name="interface_count" type="int">76</property>
+  </node>
+  <node id="38" id.type="int">
+    <property name="latency_coef" type="float">0.7129078858823411</property>
+    <property name="bandwidth_coef" type="float">0.6591842456271407</property>
+    <property name="AS_level_diversity_coef" type="float">0.4037389843252376</property>
+    <property name="link_level_diversity_coef" type="float">0.47269443232274033</property>
+    <property name="interface_count" type="int">32</property>
+  </node>
+  <node id="39" id.type="int">
+    <property name="latency_coef" type="float">0.6651434846842895</property>
+    <property name="bandwidth_coef" type="float">0.11652568575114775</property>
+    <property name="AS_level_diversity_coef" type="float">0.030260604569637972</property>
+    <property name="link_level_diversity_coef" type="float">0.8878564873546864</property>
+    <property name="interface_count" type="int">74</property>
+  </node>
+  <node id="40" id.type="int">
+    <property name="latency_coef" type="float">0.4943583611527842</property>
+    <property name="bandwidth_coef" type="float">0.9249847118612267</property>
+    <property name="AS_level_diversity_coef" type="float">0.6297848523300091</property>
+    <property name="link_level_diversity_coef" type="float">0.6102057688477323</property>
+    <property name="interface_count" type="int">70</property>
+  </node>
+  <node id="41" id.type="int">
+    <property name="latency_coef" type="float">0.8399970313876479</property>
+    <property name="bandwidth_coef" type="float">0.10727294862539272</property>
+    <property name="AS_level_diversity_coef" type="float">0.34813438185057577</property>
+    <property name="link_level_diversity_coef" type="float">0.9547159741570449</property>
+    <property name="interface_count" type="int">64</property>
+  </node>
+  <node id="42" id.type="int">
+    <property name="latency_coef" type="float">0.7972253828115111</property>
+    <property name="bandwidth_coef" type="float">0.3088218144887094</property>
+    <property name="AS_level_diversity_coef" type="float">0.885477889888893</property>
+    <property name="link_level_diversity_coef" type="float">0.7365824537233429</property>
+    <property name="interface_count" type="int">48</property>
+  </node>
+  <node id="43" id.type="int">
+    <property name="latency_coef" type="float">0.7697997274966666</property>
+    <property name="bandwidth_coef" type="float">0.28762299855726037</property>
+    <property name="AS_level_diversity_coef" type="float">0.6385554009890216</property>
+    <property name="link_level_diversity_coef" type="float">0.8943077019419305</property>
+    <property name="interface_count" type="int">105</property>
+  </node>
+  <node id="44" id.type="int">
+    <property name="latency_coef" type="float">0.6550284307585953</property>
+    <property name="bandwidth_coef" type="float">0.8441475706901259</property>
+    <property name="AS_level_diversity_coef" type="float">0.7985374272590221</property>
+    <property name="link_level_diversity_coef" type="float">0.059171214986199705</property>
+    <property name="interface_count" type="int">63</property>
+  </node>
+  <node id="45" id.type="int">
+    <property name="latency_coef" type="float">0.5001898771740145</property>
+    <property name="bandwidth_coef" type="float">0.422569589446982</property>
+    <property name="AS_level_diversity_coef" type="float">0.9694427547230721</property>
+    <property name="link_level_diversity_coef" type="float">0.6719623599327057</property>
+    <property name="interface_count" type="int">50</property>
+  </node>
+  <node id="46" id.type="int">
+    <property name="latency_coef" type="float">0.7245468273736082</property>
+    <property name="bandwidth_coef" type="float">0.7086645568851995</property>
+    <property name="AS_level_diversity_coef" type="float">0.257093191038811</property>
+    <property name="link_level_diversity_coef" type="float">0.7499471896671773</property>
+    <property name="interface_count" type="int">75</property>
+  </node>
+  <node id="47" id.type="int">
+    <property name="latency_coef" type="float">0.5357179144315597</property>
+    <property name="bandwidth_coef" type="float">0.5534987759462142</property>
+    <property name="AS_level_diversity_coef" type="float">0.859734532191621</property>
+    <property name="link_level_diversity_coef" type="float">0.008181403344316496</property>
+    <property name="interface_count" type="int">59</property>
+  </node>
+  <node id="48" id.type="int">
+    <property name="latency_coef" type="float">0.9406371799305571</property>
+    <property name="bandwidth_coef" type="float">0.5880941211569651</property>
+    <property name="AS_level_diversity_coef" type="float">0.06623962609053113</property>
+    <property name="link_level_diversity_coef" type="float">0.11416670690791153</property>
+    <property name="interface_count" type="int">51</property>
+  </node>
+  <node id="49" id.type="int">
+    <property name="latency_coef" type="float">0.3101073449092566</property>
+    <property name="bandwidth_coef" type="float">0.5620382516999175</property>
+    <property name="AS_level_diversity_coef" type="float">0.8815890597083917</property>
+    <property name="link_level_diversity_coef" type="float">0.23190823310988118</property>
+    <property name="interface_count" type="int">49</property>
+  </node>
+  <node id="50" id.type="int">
+    <property name="latency_coef" type="float">0.0033762005700294084</property>
+    <property name="bandwidth_coef" type="float">0.42217403899475836</property>
+    <property name="AS_level_diversity_coef" type="float">0.41830178078440106</property>
+    <property name="link_level_diversity_coef" type="float">0.5276177837256637</property>
+    <property name="interface_count" type="int">1</property>
+  </node>
+    <link>
+    <from type="int">1</from>
+    <to type="int">2</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">2</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">3</from>
+    <to type="int">4</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">4</from>
+    <to type="int">5</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">5</from>
+    <to type="int">6</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">6</from>
+    <to type="int">7</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">7</from>
+    <to type="int">8</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">8</from>
+    <to type="int">9</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">9</from>
+    <to type="int">10</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">10</from>
+    <to type="int">11</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">11</from>
+    <to type="int">12</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">12</from>
+    <to type="int">13</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">13</from>
+    <to type="int">14</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">14</from>
+    <to type="int">15</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">15</from>
+    <to type="int">16</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">16</from>
+    <to type="int">17</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">17</from>
+    <to type="int">18</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">18</from>
+    <to type="int">19</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">19</from>
+    <to type="int">20</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">20</from>
+    <to type="int">21</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">21</from>
+    <to type="int">22</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">22</from>
+    <to type="int">23</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">23</from>
+    <to type="int">24</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">24</from>
+    <to type="int">25</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">25</from>
+    <to type="int">26</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">26</from>
+    <to type="int">27</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">27</from>
+    <to type="int">28</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">28</from>
+    <to type="int">29</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">29</from>
+    <to type="int">30</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">30</from>
+    <to type="int">31</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">31</from>
+    <to type="int">32</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">32</from>
+    <to type="int">33</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">33</from>
+    <to type="int">34</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">34</from>
+    <to type="int">35</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">35</from>
+    <to type="int">36</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">36</from>
+    <to type="int">37</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">37</from>
+    <to type="int">38</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">38</from>
+    <to type="int">39</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">39</from>
+    <to type="int">40</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">40</from>
+    <to type="int">41</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">41</from>
+    <to type="int">42</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">42</from>
+    <to type="int">43</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">43</from>
+    <to type="int">44</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">44</from>
+    <to type="int">45</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">45</from>
+    <to type="int">46</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">46</from>
+    <to type="int">47</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">47</from>
+    <to type="int">48</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">48</from>
+    <to type="int">49</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">49</from>
+    <to type="int">50</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">2</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">2</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">2</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">2</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">2</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">2</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">2</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">2</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">2</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">2</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+</topology>

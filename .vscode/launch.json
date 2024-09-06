@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "Python Debugger: Topogen Docker",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/home/parallels/python-tools/topogen.py",
+            "console": "integratedTerminal",
+            "args": "-c default.topo -d --random-ifids"
+        },
+        {
+            "name": "Python Debugger: Topogen Kube",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/home/parallels/python-tools/topogen.py",
+            "console": "integratedTerminal",
+            "args": "-c default.topo -k --kube-push-config --kube-config kubeconfig.yaml --kube-ns scion --random-ifids"
+        },
+        {
+            "name": "Python Debugger: Current File with Arguments",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": "${command:pickArgs}"
+        },
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        }
+    ]
+}

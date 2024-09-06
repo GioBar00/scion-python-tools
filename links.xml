@@ -1,0 +1,640 @@
+  <link>
+    <from type="int">1</from>
+    <to type="int">2</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">2</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">3</from>
+    <to type="int">4</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">4</from>
+    <to type="int">5</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">5</from>
+    <to type="int">6</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">6</from>
+    <to type="int">7</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">7</from>
+    <to type="int">8</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">8</from>
+    <to type="int">9</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">9</from>
+    <to type="int">10</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">10</from>
+    <to type="int">11</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">11</from>
+    <to type="int">12</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">12</from>
+    <to type="int">13</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">13</from>
+    <to type="int">14</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">14</from>
+    <to type="int">15</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">15</from>
+    <to type="int">16</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">16</from>
+    <to type="int">17</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">17</from>
+    <to type="int">18</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">18</from>
+    <to type="int">19</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">19</from>
+    <to type="int">20</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">20</from>
+    <to type="int">21</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">21</from>
+    <to type="int">22</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">22</from>
+    <to type="int">23</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">23</from>
+    <to type="int">24</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">24</from>
+    <to type="int">25</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">25</from>
+    <to type="int">26</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">26</from>
+    <to type="int">27</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">27</from>
+    <to type="int">28</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">28</from>
+    <to type="int">29</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">29</from>
+    <to type="int">30</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">30</from>
+    <to type="int">31</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">31</from>
+    <to type="int">32</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">32</from>
+    <to type="int">33</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">33</from>
+    <to type="int">34</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">34</from>
+    <to type="int">35</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">35</from>
+    <to type="int">36</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">36</from>
+    <to type="int">37</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">37</from>
+    <to type="int">38</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">38</from>
+    <to type="int">39</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">39</from>
+    <to type="int">40</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">40</from>
+    <to type="int">41</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">41</from>
+    <to type="int">42</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">42</from>
+    <to type="int">43</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">43</from>
+    <to type="int">44</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">44</from>
+    <to type="int">45</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">45</from>
+    <to type="int">46</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">46</from>
+    <to type="int">47</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">47</from>
+    <to type="int">48</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">48</from>
+    <to type="int">49</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">49</from>
+    <to type="int">50</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">2</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">2</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">2</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">2</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">2</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">2</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">2</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">2</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">2</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">1</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>
+  <link>
+    <from type="int">2</from>
+    <to type="int">3</to>
+    <property name="rel" type="string">peer</property>
+    <property name="latitude" type="float">48.20849</property>
+    <property name="longitude" type="float">16.37208</property>
+    <property name="capacity" type="int">10</property>
+    <property name="from_index" type="int">0</property>
+    <property name="to_index" type="int">0</property>
+  </link>

@@ -8,6 +8,8 @@ import yaml
 
 from topology.config import ConfigGenerator
 
+IREC = True
+
 
 def parseNode(child):
     node = {}
@@ -95,6 +97,8 @@ def main():
     nodes, links = parseXML("tier1.xml")
     sorted_nodes = sorted(nodes, key=lambda x: x['interface_count'], reverse=True)
 
+    num_links_pair = {}
+
     core_ases = sorted_nodes[:50]
     core_ids = [int(as_['id']) for as_ in core_ases]
     print("Core ASes are: " + ', '.join([as_['id'] for as_ in core_ases]))
@@ -106,15 +110,24 @@ def main():
     #     print(yaml.load(f, Loader=yaml.SafeLoader))
 
     as_intf_state = {int(x['id']): 0 for x in nodes}
+    MAX_LINKS_PER_PAIR = 50
 
     as_dict = {'ASes': {}, 'links': []}
     for core_as in core_ids:
         as_name = kgen.asn(core_as)
 
-        as_dict['ASes'][as_name] = {'core': True, 'voting': True, 'authoritative': True, 'issuing': True}
-
+        as_dict['ASes'][as_name] = {'core': True, 'voting': True, 'authoritative': True, 'issuing': True, "dispatched_ports": "1024-65535",
+                                    'dynamic_racs': 1,
+                                    'irec': {'algorithms': [{'originate': True, 'id': 0, 'file': 'algorithms/deadbeef.wasm'}]}
+                                    }
     for link in links:
         if link['from'] in core_ids and link['to'] in core_ids:
+            link_id = [link['from'], link['to']]
+            link_id.sort()
+            link_id = str(link_id)
+            if link_id in num_links_pair and num_links_pair[link_id] >= MAX_LINKS_PER_PAIR:
+                continue
+                
             # portA = '-' + string.ascii_uppercase[
             #     math.floor(as_intf_state[link['from']] / MAX_PORTS_PER_BR)] + '#' + str(as_intf_state[link['from']])
             # portB = '-' + string.ascii_uppercase[math.floor(as_intf_state[link['to']] / MAX_PORTS_PER_BR)] + '#' + \
@@ -129,13 +142,17 @@ def main():
                 {'a': f"{kgen.asn(link['from'])}{portA}", 'b': f"{kgen.asn(link['to'])}{portB}", 'linkAtoB': 'CORE'})
             as_intf_state[link['from']] += 1
             as_intf_state[link['to']] += 1
+            if link_id in num_links_pair:
+                num_links_pair[link_id] += 1
+            else:
+                num_links_pair[link_id] = 1
         #    TODO(jvanbommel)     In CAIDA almost all links are link['rel'] == 'peer'...
         else:
             print(f"ERR! Did not create link for {link} ")
     for non_core_as in non_core_ases:
         as_name = f'1-ff00:0:{non_core_as["id"]}'
-        as_dict['ASes'].append({as_name: {'cert_issuer': '1-ff00:0:120'}})  # TODO(jvanbommel); configurable.
-    with open('dockergen.topo', 'w') as outfile:
+        as_dict['ASes'].append({as_name: {'cert_issuer': '1-ff00:0:120', "dispatched_ports": "1024-65535"}})  # TODO(jvanbommel); configurable.
+    with open('tier1-rac-wa-no_disp.topo', 'w') as outfile:
         yaml.dump(as_dict, outfile)
     #
     # class DockerConfig:
