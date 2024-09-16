@@ -1,4 +1,5 @@
 /gen/
 .idea
+*.csv
 kubeconfig.yaml
 /gen-docker-default-topo/
