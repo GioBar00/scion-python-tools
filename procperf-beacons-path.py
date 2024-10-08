@@ -3,6 +3,8 @@ from pathlib import Path
 import enum
 import pandas as pd
 from collections import defaultdict
+from datetime import datetime, timedelta
+import numpy as np
 
 from pandas import DataFrame
 
@@ -89,6 +91,7 @@ def print_span_from_as(df: DataFrame, as_id: str):
     print_packet_tree(tree, cs)
 
 if __name__ == '__main__':
+    """
     scion_dir = os.path.join(os.getcwd(), f"procperf-tier1-irec-ubpf-nopath/")
 
     scion_devs = [Path(f).stem for f in os.listdir(scion_dir) if f.endswith(".csv")]
@@ -113,5 +116,59 @@ if __name__ == '__main__':
     df_processed = df[df['Type'] == ActionType.Processed.name]
     df_not_processed = df_received[~df_received['ID'].isin(df_processed['ID'])]
     print("Number of beacons received but not processed: ", len(df_not_processed))
+    """
+    """
+    # Number of rows
+    n = 10
+
+    # Generate random IDs
+    ids = [f"ID_{i}" for i in range(1, n + 1)]
+
+    # Generate random datetime arrays
+    times = [[datetime.now() - timedelta(days=np.random.randint(0, 1000)) for _ in range(np.random.randint(1, 5))] for _
+             in range(n)]
+
+    # Create DataFrame
+    df = pd.DataFrame({
+        'ID': ids,
+        'Times': times
+    })
+
+    df['Times'] = df['Times'].apply(lambda x: [dt.isoformat() for dt in x])
+
+    df.to_csv("test.csv", sep=";", index=False)
+
+    # Load data from csv
+    df = pd.read_csv("test.csv", sep=";")
+
+    # Convert string to list
+    df['Times'] = df['Times'].apply(lambda x: x[1:-1].split(","))
+    # Remove leading and trailing whitespaces and quotes
+    df['Times'] = df['Times'].apply(lambda x: [dt.strip()[1:-1] for dt in x])
+
+    # Convert string to datetime
+    #df['Times'] = df['Times'].apply(lambda x: [datetime.fromisoformat(dt) for dt in x])
+    df['Times'] = df['Times'].apply(lambda x: [pd.to_datetime(dt) for dt in x])
+
+    # Print column types
+    print(df.dtypes)
+    print(df)
+
+    """
+
+    scion_dir = os.path.join(os.getcwd(), f"procperf-tier1-a/")
+    destination_dir = os.path.join(os.getcwd(), f"procperf-tier1/")
+    if not os.path.exists(destination_dir):
+        os.makedirs(destination_dir)
+
+    # Copy all csv files from the source directory to the destination directory keeping only the first half of the rows
+    for f in os.listdir(scion_dir):
+        if f.endswith(".csv"):
+            # do not use pandas to read the file, it is too slow
+            with open(os.path.join(scion_dir, f), "r") as file:
+                lines = file.readlines()
+                with open(os.path.join(destination_dir, f), "w") as dest_file:
+                    dest_file.writelines(lines[:len(lines) // 2])
+            print(f"File {f} copied to {destination_dir}")
 
 
