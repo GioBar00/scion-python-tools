@@ -89,10 +89,19 @@ for dev_type in ${dev_types[@]}; do
         kubectl exec -n $namespace $pod -- cp $fc_file $dev_name.txt
         kubectl cp --retries 5 $namespace/$pod:$dev_name.txt $dest_dir/$dev_name.txt
         kubectl exec -n $namespace $pod -- rm $dev_name.txt
-        # Check that copied file has 2 lines
-        num_lines=$(wc -l < $dest_dir/$dev_name.txt)
-        if [ $num_lines -ne 2 ]; then
-            echo "Error: $dest_dir/$dev_name.txt has $num_lines lines. NO FULL CONNECTIVITY."
+        # Check if there is FULL CONNECTIVITY
+        file="$dest_dir/$dev_name.txt"
+        first_line=$(head -n 1 "$file")
+        last_line=$(tail -n 1 "$file")
+        # Check if there is at least one line containing '_'
+        if grep -q '_' "$file"; then
+            contains_underscore=true
+        else
+            contains_underscore=false
+        fi
+        # Perform all checks in a single if statement
+        if [[ "$first_line" == *_* || "$last_line" == *_* || "$contains_underscore" == false ]]; then
+          echo "Error: $dest_dir/$dev_name.txt NO FULL CONNECTIVITY."
         fi
     done
 done
