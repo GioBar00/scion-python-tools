@@ -92,6 +92,8 @@ start_time=$(($(date +%s)+30))
 
 dev_types=("cs" "rac" "sd")
 
+PIDs=()
+
 for dev_type in ${dev_types[@]}; do
     echo "Extracting scenario data for $dev_type devices..."
     dev_pods=$(get_scenario_pods $namespace $dev_type)
@@ -102,7 +104,13 @@ for dev_type in ${dev_types[@]}; do
         #echo kubectl exec -n $namespace $pod -- bash -c "\"sleep \$(($start_time - \$(date +%s)))s && $exec_command\""
         kubectl exec -n $namespace $pod -- bash -c "sleep \$(($start_time - \$(date +%s)))s && $exec_command" &
         PID=$!
-        # Kill the process alter 10s
-        (sleep 10 && kill -9 $PID) &
+        # Kill the process after 30s
+        (sleep 30 && kill -9 $PID) &
+        PIDs+=($PID)
     done
+done
+
+echo "Waiting for all devices to start..."
+for PID in ${PIDs[@]}; do
+    wait $PID
 done

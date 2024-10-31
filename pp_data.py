@@ -428,19 +428,19 @@ if __name__ == '__main__':
     if not os.path.exists(data_dir):
         os.makedirs(data_dir)
 
-    scion_dir_names = []
+    scion_dir_names = ['scion-20m']
     irec_dir_names = []
     # Load all folders in the topology directory
-    for dir in os.listdir(topology_dir):
-        if not os.path.isdir(os.path.join(topology_dir, dir)):
-            continue
-        if dir.startswith('scion'):
-            scion_dir_names.append(dir)
-        elif dir.startswith('irec'):
-            irec_dir_names.append(dir)
+    # for dir in os.listdir(topology_dir):
+    #     if not os.path.isdir(os.path.join(topology_dir, dir)):
+    #         continue
+    #     if dir.startswith('scion'):
+    #         scion_dir_names.append(dir)
+    #     elif dir.startswith('irec'):
+    #         irec_dir_names.append(dir)
 
-    # for scion_name in scion_dir_names:
-    #     scion_to_data(scion_name)
+    for scion_name in scion_dir_names:
+        scion_to_data(scion_name)
 
     for irec_name in irec_dir_names:
         irec_to_data(irec_name)
