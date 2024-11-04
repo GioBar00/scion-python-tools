@@ -1,12 +1,15 @@
 import enum
 import os.path
 from pathlib import Path
+from statistics import median
+
 import pandas as pd
 import shutil
 import swifter
 import numpy as np
 import humanfriendly
 from matplotlib import pyplot as plt
+from cycler import cycler
 
 OVERRIDE = True
 
@@ -63,22 +66,27 @@ def fc_data_to_plot(source_dirs, dest_dir):
 
     # Create CDF plot with all data
     plt.figure()
-    for _, duration in fc_data.items():
+    for key, duration in fc_data.items():
         yvals = np.arange(len(duration)) / float(len(duration))
-        plt.plot(duration, yvals)
-    plt.xlabel('Duration (s)')
-    plt.ylabel('Probability')
-    plt.legend(fc_data.keys())
+        yvals[-1] = 1
+        plt.plot(duration, yvals, label=key.replace('scion', 'SCION').replace('irec-ubpf', 'IREC'))
+    plt.xlabel('Duration [s]')
+    plt.ylabel('CDF')
+    plt.legend()
     #plt.title('Flow Completion Time')
-    for i, key in enumerate(fc_data.keys()):
-        max = np.max(fc_data[key])
-        plt.axvline(x=max, color=colors[i], linestyle='--')
-        plt.text(np.max(fc_data[key])+0.1, 0, f'{max}s', rotation=90, color=colors[i], fontsize=8)
+    # for i, key in enumerate(fc_data.keys()):
+    #     max = np.max(fc_data[key])
+    #     plt.axvline(x=max, color=colors[i], linestyle='--')
+    #     plt.text(np.max(fc_data[key])+0.1, 0, f'{max}s', rotation=90, color=colors[i], fontsize=8)
     # Plot the 95th percentile
     # percentile_95 = np.percentile(np.concatenate(list(fc_data.values())), 95)
     # plt.axvline(x=percentile_95, color=colors[-1], linestyle='--')
     # plt.text(percentile_95+0.1, 0., f'95th percentile', rotation=90, color=colors[1])
-    plt.savefig(os.path.join(dest_dir, 'fc', 'fc_cdf.png'), bbox_inches='tight', dpi=300)
+    # Add minor ticks
+    plt.minorticks_on()
+    # make grid transparent
+    plt.grid(which='both', linestyle='--', linewidth=0.5, alpha=0.5)
+    plt.savefig(os.path.join(dest_dir, 'fc', 'fc_cdf.pdf'), bbox_inches='tight', dpi=300)
     plt.close()
 
 
@@ -111,35 +119,53 @@ def usage_data_to_plot(usage_dirs, dest_dir):
 
     def plot_usage(t, tpm, dev, k):
         plt.figure()
+        median = []
         for key, data in usage_data.items():
             if tpm not in data or dev not in data[tpm] or k not in data[tpm][dev]:
                 continue
             # Plot cdf
             yvals = np.arange(len(data[tpm][dev][k])) / float(len(data[tpm][dev][k]))
-            plt.plot(data[tpm][dev][k], yvals, label=key)
+            # Force last value to 1
+            yvals[-1] = 1
+            plt.plot(data[tpm][dev][k], yvals, label=key.replace('scion', 'SCION').replace('irec-ubpf', 'IREC'))
+            median.append(np.median(data[tpm][dev][k]))
         if t == 'cpu':
-            plt.xlabel('CPU')
-            # Humanize CPU
+            plt.xlabel('CPU [%]')
+            tick_interval = (plt.gca().get_xticks()[1] - plt.gca().get_xticks()[0]) * 100
             plt.gca().get_xaxis().set_major_formatter(
-                plt.FuncFormatter(lambda x, _: f'%.1fm' % (x * 1000) if x < 1 else f'%.1f' % x))
-        elif t == 'mem':
-            plt.xlabel('Memory')
-            # Humanize memory
-            plt.gca().get_xaxis().set_major_formatter(plt.FuncFormatter(lambda x, _: humanfriendly.format_size(x)))
-        elif t == 'net_rx':
-            plt.xlabel('Network RX')
-            # Humanize network
+                plt.FuncFormatter(lambda x, _: f'%.2f' % (x * 100) if tick_interval < 1 else f'%.0f' % (x * 100)))
+        else:
+            # Compute median memory unit
+            unit = 'B'
+            size = 1
+            max_mem = np.max(median)
+            if max_mem > 1e9:
+                unit = 'GB'
+                size = 1e9
+            elif max_mem > 1e6:
+                unit = 'MB'
+                size = 1e6
+            elif max_mem > 1e3:
+                unit = 'KB'
+                size = 1e3
+            tick_interval = (plt.gca().get_xticks()[1] - plt.gca().get_xticks()[0]) / size
             plt.gca().get_xaxis().set_major_formatter(
-                plt.FuncFormatter(lambda x, _: humanfriendly.format_size(x) + '/s'))
-        elif t == 'net_tx':
-            plt.xlabel('Network TX')
-            # Humanize network
-            plt.gca().get_xaxis().set_major_formatter(
-                plt.FuncFormatter(lambda x, _: humanfriendly.format_size(x) + '/s'))
-        plt.ylabel(f'Probability {t} {k}')
+                plt.FuncFormatter(lambda x, _: f'%.2f' % (x / size) if tick_interval < 1 else f'%.0f' % (x / size)))
+            if t == 'mem':
+                plt.xlabel(f'Memory [{unit}]')
+            elif t == 'net_rx':
+                plt.xlabel(f'Network RX [{unit}/s]')
+            elif t == 'net_tx':
+                plt.xlabel(f'Network TX [{unit}/s]')
+        #plt.ylabel(f'Probability {t} {k}')
+        plt.ylabel(f'CDF')
         # plt.xscale('log')
         plt.legend()
-        plt.savefig(os.path.join(dest_dir, 'usage', f'{t}_{dev.value}_{k}.png'), bbox_inches='tight', dpi=300)
+        # Add minor ticks
+        plt.minorticks_on()
+        # make grid transparent
+        plt.grid(which='both', linestyle='--', linewidth=0.5, alpha=0.5)
+        plt.savefig(os.path.join(dest_dir, 'usage', f'{t}_{dev.value}_{k}.pdf'), bbox_inches='tight', dpi=300)
         plt.close()
 
     for t in ['cpu', 'mem', 'net_rx', 'net_tx']:
@@ -153,38 +179,57 @@ def usage_data_to_plot(usage_dirs, dest_dir):
         dev = DeviceType.RAC
         plt.figure()
         i = 0
+        median = []
         for key, data in usage_data.items():
             if t not in data or dev not in data[tpm] or 'peak' not in data[tpm][dev] or 'median' not in data[tpm][dev]:
                 continue
             # Plot cdf
             yvals = np.arange(len(data[tpm][dev]['peak'])) / float(len(data[tpm][dev]['peak']))
-            plt.plot(data[tpm][dev]['peak'], yvals, label=f'peak', color=colors[i])
+            yvals[-1] = 1
+            plt.plot(data[tpm][dev]['peak'], yvals, label=f'peak', color=colors[2])
+            median.append(np.median(data[tpm][dev]['peak']))
             yvals = np.arange(len(data[tpm][dev]['median'])) / float(len(data[tpm][dev]['median']))
-            plt.plot(data[tpm][dev]['median'], yvals, label=f'median', color=colors[i], linestyle='--')
+            yvals[-1] = 1
+            plt.plot(data[tpm][dev]['median'], yvals, label=f'median', color=colors[2], linestyle='--')
+            median.append(np.median(data[tpm][dev]['median']))
             i += 1
         if t == 'cpu':
-            plt.xlabel('CPU')
+            plt.xlabel('CPU [%]')
+            tick_interval = (plt.gca().get_xticks()[1] - plt.gca().get_xticks()[0]) * 100
             # Humanize CPU
             plt.gca().get_xaxis().set_major_formatter(
-                plt.FuncFormatter(lambda x, _: f'%.1fm' % (x * 1000) if x < 1 else f'%.1f' % x))
-        elif t == 'mem':
-            plt.xlabel('Memory')
-            # Humanize memory
-            plt.gca().get_xaxis().set_major_formatter(plt.FuncFormatter(lambda x, _: humanfriendly.format_size(x)))
-        elif t == 'net_rx':
-            plt.xlabel('Network RX')
-            # Humanize network
+                plt.FuncFormatter(lambda x, _: f'%.2f' % (x * 100) if tick_interval < 1 else f'%.0f' % (x * 100)))
+        else:
+            unit = 'B'
+            size = 1
+            max_mem = np.max(median)
+            if max_mem > 1e9:
+                unit = 'GB'
+                size = 1e9
+            elif max_mem > 1e6:
+                unit = 'MB'
+                size = 1e6
+            elif max_mem > 1e3:
+                unit = 'KB'
+                size = 1e3
+            tick_interval = (plt.gca().get_xticks()[1] - plt.gca().get_xticks()[0]) / size
             plt.gca().get_xaxis().set_major_formatter(
-                plt.FuncFormatter(lambda x, _: humanfriendly.format_size(x) + '/s'))
-        elif t == 'net_tx':
-            plt.xlabel('Network TX')
-            # Humanize network
-            plt.gca().get_xaxis().set_major_formatter(
-                plt.FuncFormatter(lambda x, _: humanfriendly.format_size(x) + '/s'))
-        plt.ylabel(f'Probability {t}')
+                plt.FuncFormatter(lambda x, _: f'%.2f' % (x / size) if tick_interval < 1 else f'%.0f' % (x / size)))
+            if t == 'mem':
+                plt.xlabel(f'Memory [{unit}]')
+            elif t == 'net_rx':
+                plt.xlabel(f'Network RX [{unit}/s]')
+            elif t == 'net_tx':
+                plt.xlabel(f'Network TX [{unit}/s]')
+
+        plt.ylabel(f'CDF')
         #plt.xscale('log')
         plt.legend()
-        plt.savefig(os.path.join(dest_dir, 'usage', f'{t}_{dev.value}.png'), bbox_inches='tight', dpi=300)
+        # Add minor ticks
+        plt.minorticks_on()
+        # make grid transparent
+        plt.grid(which='both', linestyle='--', linewidth=0.5, alpha=0.5)
+        plt.savefig(os.path.join(dest_dir, 'usage', f'{t}_{dev.value}.pdf'), bbox_inches='tight', dpi=300)
         plt.close()
 
 
@@ -203,10 +248,12 @@ def create_box_plot(source_dir, sub_plot_dir, category_files, out_file):
     if len(category_data.items()) == 0:
         return
     # Create box plot
-    plt.boxplot(category_data.values(), tick_labels=category_data.keys(), showfliers=False, showmeans=True, meanline=True, flierprops=dict(marker='x', markersize=1))
+    plt.boxplot(category_data.values(), tick_labels=category_data.keys(), showfliers=False, showmeans=False, meanline=True, flierprops=dict(marker='x', markersize=1))
     plt.yscale('log')
-    plt.ylabel('Time (s)')
-    plt.xticks(rotation=45)
+    plt.ylabel('Time [s]')
+    #plt.xticks(rotation=45)
+    # make grid transparent on y-axis
+    plt.grid(axis='y', which='both', linestyle='--', linewidth=0.5, alpha=0.5)
     # Add text on top of each box
     for i, (category, vals) in enumerate(category_data.items()):
         # Calculate quantile without outliers
@@ -238,7 +285,7 @@ def scion_data_to_plot(scion_name):
         'Handle\nBeacon': 'handle_bcn.csv',
     }
 
-    create_box_plot(scion_dir, sub_plot_dir, category_files_cs, 'scion_cs.png')
+    create_box_plot(scion_dir, sub_plot_dir, category_files_cs, 'scion_cs.pdf')
 
 
 def irec_data_to_plot(irec_name):
@@ -261,7 +308,7 @@ def irec_data_to_plot(irec_name):
     # category_files_rac = {
     # }
 
-    create_box_plot(irec_dir, sub_plot_dir, category_files_cs, 'irec_cs.png')
+    create_box_plot(irec_dir, sub_plot_dir, category_files_cs, 'irec_cs.pdf')
     #create_box_plot(category_files_rac, 'irec_rac.png')
 
 
@@ -276,6 +323,12 @@ if __name__ == '__main__':
         os.makedirs(plot_dir)
 
     colors = plt.rcParams['axes.prop_cycle'].by_key()['color']
+    # Font Times New Roman
+    plt.rcParams['font.family'] = 'Times New Roman'
+    # Font size 9
+    plt.rcParams.update({'font.size': 9})
+    # Cycle through colors and line styles
+    plt.rcParams['axes.prop_cycle'] = cycler(color=colors[:4]) + cycler(linestyle=['-', '--', '-.', ':'])
 
     scion_dir_names = ['scion-30s', 'scion-20m']
     irec_dir_names = ['irec-ubpf']
@@ -295,9 +348,9 @@ if __name__ == '__main__':
         irec_data_to_plot(irec_name)
 
     # Create fc plot
-    fc_data_to_plot([os.path.join(data_dir, scion_name) for scion_name in scion_dir_names] + [os.path.join(data_dir, irec_name) for irec_name in irec_dir_names], plot_dir)
+    #fc_data_to_plot([os.path.join(data_dir, scion_name) for scion_name in scion_dir_names] + [os.path.join(data_dir, irec_name) for irec_name in irec_dir_names], plot_dir)
 
     # Create usage plot
-    usage_data_to_plot([os.path.join(data_dir, scion_name) for scion_name in scion_dir_names] + [os.path.join(data_dir, irec_name) for irec_name in irec_dir_names], plot_dir)
+    #usage_data_to_plot([os.path.join(data_dir, scion_name) for scion_name in scion_dir_names] + [os.path.join(data_dir, irec_name) for irec_name in irec_dir_names], plot_dir)
 
     pass
