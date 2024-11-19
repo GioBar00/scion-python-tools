@@ -8,7 +8,9 @@ import shutil
 import swifter
 import numpy as np
 import humanfriendly
+from dask.array import minimum
 from matplotlib import pyplot as plt
+import matplotlib.ticker as mticker
 from cycler import cycler
 
 OVERRIDE = True
@@ -70,11 +72,12 @@ def fc_data_to_plot(source_dirs, dest_dir):
         yvals = np.arange(len(duration)) / float(len(duration))
         yvals[-1] = 1
         plt.plot(duration, yvals, label=key.replace('scion', 'SCION').replace('irec-ubpf', 'IREC'))
-    plt.xlabel('Duration (s)')
+    plt.xlabel(r'Duration \texttt{(s)}')
     plt.ylabel('CDF')
     plt.ylim(0, 1)
     # set xmin to 0
     plt.xlim(0, None)
+    plt.gca().get_yaxis().set_major_formatter(plt.FuncFormatter(lambda x, _: r'\texttt{%.1f}' % x))
     plt.legend()
     #plt.title('Flow Completion Time')
     # for i, key in enumerate(fc_data.keys()):
@@ -123,6 +126,7 @@ def usage_data_to_plot(usage_dirs, dest_dir):
     def plot_usage(t, tpm, dev, k):
         plt.figure()
         median = []
+        minimum = []
         for key, data in usage_data.items():
             if tpm not in data or dev not in data[tpm] or k not in data[tpm][dev]:
                 continue
@@ -132,8 +136,10 @@ def usage_data_to_plot(usage_dirs, dest_dir):
             yvals[-1] = 1
             plt.plot(data[tpm][dev][k], yvals, label=key.replace('scion', 'SCION').replace('irec-ubpf', 'IREC'))
             median.append(np.median(data[tpm][dev][k]))
+            minimum.append(np.min(data[tpm][dev][k]))
         if t == 'cpu':
-            plt.xlabel('CPU (%)')
+            size = 1
+            plt.xlabel(r'CPU (\%)')
             tick_interval = (plt.gca().get_xticks()[1] - plt.gca().get_xticks()[0]) * 100
             plt.gca().get_xaxis().set_major_formatter(
                 plt.FuncFormatter(lambda x, _: f'%.2f' % (x * 100) if tick_interval < 1 else f'%.0f' % (x * 100)))
@@ -155,12 +161,19 @@ def usage_data_to_plot(usage_dirs, dest_dir):
             plt.gca().get_xaxis().set_major_formatter(
                 plt.FuncFormatter(lambda x, _: f'%.2f' % (x / size) if tick_interval < 1 else f'%.0f' % (x / size)))
             if t == 'mem':
-                plt.xlabel(f'Memory ({unit})')
+                plt.xlabel(r'Memory (%s)' % unit)
             elif t == 'net_rx':
-                plt.xlabel(f'Network RX ({unit}/s)')
+                plt.xlabel(r'Network RX (%s/s)' % unit)
             elif t == 'net_tx':
-                plt.xlabel(f'Network TX ({unit}/s)'
-                           f'')
+                plt.xlabel(r'Network TX (%s/s)' % unit)
+
+        # converted_min = [m / size for m in minimum]
+        # if np.min(converted_min) < 2 * tick_interval:
+        #     plt.xlim(0, None)
+        # else:
+        start = np.floor(np.min(minimum) / (size * tick_interval)) * tick_interval * size
+        plt.xlim(start, None)
+        #plt.gca().get_yaxis().set_major_formatter(plt.FuncFormatter(lambda x, _: r'\texttt{%.1f}' % x))
         #plt.ylabel(f'Probability {t} {k}')
         plt.ylabel(f'CDF')
         plt.ylim(0, 1)
@@ -185,6 +198,7 @@ def usage_data_to_plot(usage_dirs, dest_dir):
         plt.figure()
         i = 0
         median = []
+        minimum = []
         for key, data in usage_data.items():
             if t not in data or dev not in data[tpm] or 'peak' not in data[tpm][dev] or 'median' not in data[tpm][dev]:
                 continue
@@ -193,13 +207,16 @@ def usage_data_to_plot(usage_dirs, dest_dir):
             yvals[-1] = 1
             plt.plot(data[tpm][dev]['peak'], yvals, label=f'peak', color=colors[2])
             median.append(np.median(data[tpm][dev]['peak']))
+            minimum.append(np.min(data[tpm][dev]['peak']))
             yvals = np.arange(len(data[tpm][dev]['median'])) / float(len(data[tpm][dev]['median']))
             yvals[-1] = 1
             plt.plot(data[tpm][dev]['median'], yvals, label=f'median', color=colors[2], linestyle='--')
             median.append(np.median(data[tpm][dev]['median']))
+            minimum.append(np.min(data[tpm][dev]['median']))
             i += 1
         if t == 'cpu':
-            plt.xlabel('CPU (%)')
+            size = 1
+            plt.xlabel(r'CPU (\%)')
             tick_interval = (plt.gca().get_xticks()[1] - plt.gca().get_xticks()[0]) * 100
             # Humanize CPU
             plt.gca().get_xaxis().set_major_formatter(
@@ -221,12 +238,18 @@ def usage_data_to_plot(usage_dirs, dest_dir):
             plt.gca().get_xaxis().set_major_formatter(
                 plt.FuncFormatter(lambda x, _: f'%.2f' % (x / size) if tick_interval < 1 else f'%.0f' % (x / size)))
             if t == 'mem':
-                plt.xlabel(f'Memory ({unit})')
+                plt.xlabel(r'Memory (%s)' % unit)
             elif t == 'net_rx':
-                plt.xlabel(f'Network RX ({unit}/s)')
+                plt.xlabel(r'Network RX (%s/s)' % unit)
             elif t == 'net_tx':
-                plt.xlabel(f'Network TX ({unit}/s)')
+                plt.xlabel(r'Network TX (%s/s)' % unit)
 
+        # if np.min(minimum) < 2 * tick_interval:
+        #     plt.xlim(0, None)
+        start = np.floor(np.min(minimum) / (size * tick_interval)) * tick_interval * size
+        plt.xlim(start, None)
+
+        #plt.gca().get_yaxis().set_major_formatter(plt.FuncFormatter(lambda x, _: r'\texttt{%.1f}' % x))
         plt.ylabel(f'CDF')
         plt.ylim(0, 1)
         #plt.xscale('log')
@@ -254,9 +277,17 @@ def create_box_plot(source_dir, sub_plot_dir, category_files, out_file):
     if len(category_data.items()) == 0:
         return
     # Create box plot
-    plt.boxplot(category_data.values(), tick_labels=category_data.keys(), showfliers=False, showmeans=False, meanline=True, flierprops=dict(marker='x', markersize=1))
+    bplot = plt.boxplot(category_data.values(), tick_labels=category_data.keys(), showfliers=False, showmeans=False, meanline=True,
+                flierprops=dict(marker='x', markersize=1), patch_artist=True)
+    # Set face color
+    for patch in bplot['boxes']:
+        patch.set_facecolor('white')
     plt.yscale('log')
     plt.ylabel('Time (s)')
+    f = mticker.ScalarFormatter(useOffset=False, useMathText=True)
+    f.set_scientific(True)
+    g = lambda x, pos: r"{\ttfamily $%s$}" % f.format_data(x)
+    plt.gca().get_yaxis().set_major_formatter(g)
     #plt.xticks(rotation=45)
     # make grid transparent on y-axis
     plt.grid(axis='y', which='both', linestyle='--', linewidth=0.5, alpha=0.5)
@@ -271,7 +302,8 @@ def create_box_plot(source_dir, sub_plot_dir, category_files, out_file):
         else:
             ms = q1 * 1000
             ms_str = "%.2fms" % ms
-        if i in [1, 5, 8, len(category_data.keys()) - 1]:
+        #if i in [1, 5, 8, len(category_data.keys()) - 1]:
+        if i in [len(category_data.keys()) - 1]:
             plt.text(i + 0.95, q1, ms_str, ha='right', va='bottom', color='black', fontsize=6)
         else:
             plt.text(i + 1.05, q1, ms_str, ha='left', va='bottom', color='black', fontsize=6)
@@ -284,11 +316,11 @@ def scion_data_to_plot(scion_name):
     scion_dir = os.path.join(data_dir, scion_name)
 
     category_files_cs = {
-        'Retrieve\nBeacon': 'prop_filter.csv',
-        'Store\nSegment': 'written.csv',
-        'Originate\nBeacon': 'originated_bcn.csv',
-        'Propagate\nBeacon': 'prop_bcn.csv',
-        'Handle\nBeacon': 'handle_bcn.csv',
+        r'\begin{center}Retrieve\\Beacon\end{center}': 'prop_filter.csv',
+        r'\begin{center}Store\\Segment\end{center}': 'written.csv',
+        r'\begin{center}Originate\\Beacon\end{center}': 'originated_bcn.csv',
+        r'\begin{center}Propagate\\Beacon\end{center}': 'prop_bcn.csv',
+        r'\begin{center}Handle\\Beacon\end{center}': 'handle_bcn.csv',
     }
 
     create_box_plot(scion_dir, sub_plot_dir, category_files_cs, 'scion_cs.pdf')
@@ -300,15 +332,15 @@ def irec_data_to_plot(irec_name):
 
     category_files_cs = {
         #'Process\nJob': 'job_processing.csv',
-        'Retrieve\nBeacon': 'job_retrieval.csv',
-        'Execute\nBeacon': 'job_execution.csv',
-        'Filter\nBeacon': 'prop_filter.csv',
-        'Mark\nBeacon': 'egress_mark.csv',
-        'Store\nSegment': 'written.csv',
-        'Fetch\nAlgorithm': 'algorithm.csv',
-        'Originate\nBeacon': 'originated_bcn.csv',
-        'Propagate\nBeacon': 'prop_bcn.csv',
-        'Handle\nBeacon': 'handle_bcn.csv',
+        r'\begin{center}Retrieve\\Beacon\end{center}': 'job_retrieval.csv',
+        r'\begin{center}Execute\\Beacon\end{center}': 'job_execution.csv',
+        r'\begin{center}Filter\\Beacon\end{center}': 'prop_filter.csv',
+        r'\begin{center}Mark\\Beacon\end{center}': 'egress_mark.csv',
+        r'\begin{center}Store\\Segment\end{center}': 'written.csv',
+        r'\begin{center}Fetch\\Algorithm\end{center}': 'algorithm.csv',
+        r'\begin{center}Originate\\Beacon\end{center}': 'originated_bcn.csv',
+        r'\begin{center}Propagate\\Beacon\end{center}': 'prop_bcn.csv',
+        r'\begin{center}Handle\\Beacon\end{center}': 'handle_bcn.csv',
     }
 
     # category_files_rac = {
@@ -331,11 +363,12 @@ if __name__ == '__main__':
     colors = plt.rcParams['axes.prop_cycle'].by_key()['color']
     # Font Times New Roman
     #plt.rcParams['font.family'] = 'Times New Roman'
+    # Font size 9
+    # plt.rcParams.update({'font.size': 9})
     plt.rcParams['font.family'] = 'serif'
     plt.rcParams['font.serif'] = 'cmr'
     plt.rcParams['text.usetex'] = True
-    # Font size 9
-    #plt.rcParams.update({'font.size': 9})
+
     # Cycle through colors and line styles
     plt.rcParams['axes.prop_cycle'] = cycler(color=colors[:4]) + cycler(linestyle=['-', '--', '-.', ':'])
 
@@ -350,16 +383,16 @@ if __name__ == '__main__':
     #     elif dir.startswith('irec'):
     #         irec_dir_names.append(dir)
 
-    # for scion_name in scion_dir_names:
-    #     scion_data_to_plot(scion_name)
-    #
-    # for irec_name in irec_dir_names:
-    #     irec_data_to_plot(irec_name)
+    for scion_name in scion_dir_names:
+        scion_data_to_plot(scion_name)
+
+    for irec_name in irec_dir_names:
+        irec_data_to_plot(irec_name)
 
     # Create fc plot
-    fc_data_to_plot([os.path.join(data_dir, scion_name) for scion_name in scion_dir_names] + [os.path.join(data_dir, irec_name) for irec_name in irec_dir_names], plot_dir)
+    #fc_data_to_plot([os.path.join(data_dir, scion_name) for scion_name in scion_dir_names] + [os.path.join(data_dir, irec_name) for irec_name in irec_dir_names], plot_dir)
 
     # Create usage plot
-    usage_data_to_plot([os.path.join(data_dir, scion_name) for scion_name in scion_dir_names] + [os.path.join(data_dir, irec_name) for irec_name in irec_dir_names], plot_dir)
+    #usage_data_to_plot([os.path.join(data_dir, scion_name) for scion_name in scion_dir_names] + [os.path.join(data_dir, irec_name) for irec_name in irec_dir_names], plot_dir)
 
     pass
